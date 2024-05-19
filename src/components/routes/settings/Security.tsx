@@ -1,4 +1,3 @@
-import React from 'react';
 import PasswordInput from "@/components/shared/PasswordInput";
 
 const Security = () => {

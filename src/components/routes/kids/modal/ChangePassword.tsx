@@ -1,7 +1,7 @@
 import {CloseIcon} from "@/components/shared/Svg";
 import PasswordInput from "@/components/shared/PasswordInput";
 
-const ChangePassword = ({closeModal}: any) => {
+const ChangePassword = ({closeModal}: {closeModal: () => void}) => {
     return (
         <div>
             <div className={"flex-center-between"}>

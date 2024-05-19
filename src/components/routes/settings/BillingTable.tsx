@@ -3,7 +3,7 @@ import {useState} from "react";
 import Receipt from "@/components/routes/settings/modal/Receipt";
 
 const GreenDotIcon = <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
-    <circle cx="4" cy="4.5" r="3" fill="#CEF3F0" stroke="#09C2B2" stroke-width="2"/>
+    <circle cx="4" cy="4.5" r="3" fill="#CEF3F0" stroke="#09C2B2" strokeWidth="2"/>
 </svg>
 
 const BillingTable = () => {

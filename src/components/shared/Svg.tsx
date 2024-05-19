@@ -48,8 +48,8 @@ export const DashboardIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" 
     </g>
     <defs>
         <filter id="filter0_i_247_5487" x="13.4395" y="2.54541" width="8.56055" height="12.56"
-                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -60,8 +60,8 @@ export const DashboardIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" 
             <feBlend mode="normal" in2="shape" result="effect1_innerShadow_247_5487"/>
         </filter>
         <filter id="filter1_i_247_5487" x="2" y="13.9754" width="8.56055" height="12.57" filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -72,8 +72,8 @@ export const DashboardIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" 
             <feBlend mode="normal" in2="shape" result="effect1_innerShadow_247_5487"/>
         </filter>
         <filter id="filter2_i_247_5487" x="2" y="2.54541" width="8.58008" height="12.58" filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -84,8 +84,8 @@ export const DashboardIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" 
             <feBlend mode="normal" in2="shape" result="effect1_innerShadow_247_5487"/>
         </filter>
         <filter id="filter3_i_247_5487" x="13.4199" y="13.9654" width="8.58008" height="12.58"
-                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -105,8 +105,8 @@ export const KidIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" height
     </g>
     <defs>
         <filter id="filter0_i_290_10716" x="2" y="2.54492" width="19.9902" height="24" filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -126,8 +126,8 @@ export const TaskIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" heigh
     </g>
     <defs>
         <filter id="filter0_i_290_10724" x="2" y="2.54492" width="20" height="20" filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -171,8 +171,8 @@ export const ShopIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" heigh
     </g>
     <defs>
         <filter id="filter0_i_290_10736" x="1.5708" y="1.79492" width="20.8096" height="15.5"
-                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -183,8 +183,8 @@ export const ShopIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" heigh
             <feBlend mode="normal" in2="shape" result="effect1_innerShadow_290_10736"/>
         </filter>
         <filter id="filter1_i_290_10736" x="9.12012" y="17.1697" width="5.75" height="9.75524"
-                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -195,8 +195,8 @@ export const ShopIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" heigh
             <feBlend mode="normal" in2="shape" result="effect1_innerShadow_290_10736"/>
         </filter>
         <filter id="filter2_i_290_10736" x="2.62988" y="13.1249" width="18.7402" height="13.8"
-                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -217,8 +217,8 @@ export const SettingsIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" h
     </g>
     <defs>
         <filter id="filter0_i_290_10746" x="2.83008" y="2.54742" width="18.3398" height="19.9975"
-                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -306,20 +306,20 @@ export const RemoveKidIcon = <svg xmlns="http://www.w3.org/2000/svg" width="12" 
         fill="#F07846"/>
 </svg>
 export const CloseIcon = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-    <path d="M5 15.5L15 5.5M5 5.5L15 15.5" stroke="#A1A1A1" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round"/>
+    <path d="M5 15.5L15 5.5M5 5.5L15 15.5" stroke="#A1A1A1" strokeWidth="2" strokeLinecap="round"
+          strokeLinejoin="round"/>
 </svg>
 export const CircleCloseIcon = <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
     <rect y="0.5" width="24" height="24" rx="12" fill="#F5F5F5"/>
-    <path d="M16 8.5L8 16.5" stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M8 8.5L16 16.5" stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 8.5L8 16.5" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M8 8.5L16 16.5" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 
 export const SelectedIcon = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                  fill="none">
-    <path d="M6 10.1667L9.33333 13.5L14.3333 6" stroke="#F07846" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round"/>
+    <path d="M6 10.1667L9.33333 13.5L14.3333 6" stroke="#F07846" strokeWidth="1.5" strokeLinecap="round"
+          strokeLinejoin="round"/>
 </svg>
 export const WalletIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                fill="none">
@@ -361,11 +361,11 @@ export const EditKidIcon = <svg width="24" height="24" viewBox="0 0 24 24" fill=
         fill="white"/>
 </svg>
 export const Circle = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="1" y="1" width="14" height="14" rx="7" fill="white" stroke="#E0E0E0" stroke-width="2"/>
+    <rect x="1" y="1" width="14" height="14" rx="7" fill="white" stroke="#E0E0E0" strokeWidth="2"/>
 </svg>
 export const SelectedCircle = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
                                    fill="none">
-    <rect x="2.5" y="2.5" width="11" height="11" rx="5.5" fill="white" stroke="#F07846" stroke-width="5"/>
+    <rect x="2.5" y="2.5" width="11" height="11" rx="5.5" fill="white" stroke="#F07846" strokeWidth="5"/>
 </svg>
 export const VerticalThreeDotIcon = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                          fill="none">
@@ -393,8 +393,8 @@ export const LogoutIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" hei
     </g>
     <defs>
         <filter id="filter0_i_2061_39911" x="3.24219" y="2" width="10.8672" height="20" filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -404,8 +404,8 @@ export const LogoutIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" hei
             <feBlend mode="normal" in2="shape" result="effect1_innerShadow_2061_39911"/>
         </filter>
         <filter id="filter1_i_2061_39911" x="14.1016" y="8.4725" width="6.65625" height="7.17751"
-                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                            result="hardAlpha"/>
@@ -484,25 +484,25 @@ export const AddPhotoIcon = <svg xmlns="http://www.w3.org/2000/svg" width="40" h
                                  fill="none">
     <path
         d="M19.9987 36.6667C29.1654 36.6667 36.6654 29.1667 36.6654 20C36.6654 10.8334 29.1654 3.33337 19.9987 3.33337C10.832 3.33337 3.33203 10.8334 3.33203 20C3.33203 29.1667 10.832 36.6667 19.9987 36.6667Z"
-        stroke="#868686" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M13.332 20H26.6654" stroke="#868686" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M20 26.6667V13.3334" stroke="#868686" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        stroke="#868686" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M13.332 20H26.6654" stroke="#868686" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M20 26.6667V13.3334" stroke="#868686" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 export const MenuIcon = <svg xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 18 10" fill="none">
-    <path d="M1 9H17" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M1 1H17" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1 9H17" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M1 1H17" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 export const ArrowLeftIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                   fill="none">
-    <path d="M9.57 5.92999L3.5 12L9.57 18.07" stroke="#A1A1A1" stroke-width="3" stroke-miterlimit="10"
-          stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M20.5019 12H3.67188" stroke="#A1A1A1" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round"
-          stroke-linejoin="round"/>
+    <path d="M9.57 5.92999L3.5 12L9.57 18.07" stroke="#A1A1A1" strokeWidth="3" strokeMiterlimit="10"
+          strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M20.5019 12H3.67188" stroke="#A1A1A1" strokeWidth="3" strokeMiterlimit="10" strokeLinecap="round"
+          strokeLinejoin="round"/>
 </svg>
 export const CloseMenuIcon = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                   fill="none">
-    <path d="M6 6.31348L17.3137 17.6272" stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round"/>
-    <path d="M6 17.3136L17.3137 5.99989" stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round"/>
+    <path d="M6 6.31348L17.3137 17.6272" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round"
+          strokeLinejoin="round"/>
+    <path d="M6 17.3136L17.3137 5.99989" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round"
+          strokeLinejoin="round"/>
 </svg>

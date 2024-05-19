@@ -1,6 +1,6 @@
 import {CloseIcon} from "@/components/shared/Svg";
 
-const RemoveKid = ({closeModal}: any) => {
+const RemoveKid = ({closeModal}: {closeModal: () => void}) => {
     return (
         <div>
             <div className={"flex-center-between"}>

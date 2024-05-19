@@ -1,5 +1,3 @@
-import React from 'react';
-
 const NoBillingHistory = () => {
     return (
         <div className={"mt-10"}>

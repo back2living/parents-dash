@@ -2,7 +2,7 @@ import {CloseIcon, SelectedCircle, Circle} from "@/components/shared/Svg";
 import {useState} from "react";
 import {cn} from "@/lib/utils";
 
-const DoCard = ({closeModal}: any) => {
+const DoCard = ({closeModal}: {closeModal: () => void}) => {
     const [isMandatory, setIsMandatory] = useState<boolean>(false);
 
     return (

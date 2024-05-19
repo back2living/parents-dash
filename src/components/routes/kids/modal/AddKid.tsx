@@ -4,7 +4,7 @@ import {cn} from "@/lib/utils";
 import {useState} from "react";
 import PasswordInput from "@/components/shared/PasswordInput";
 
-const AddKid = ({closeModal}: any) => {
+const AddKid = ({closeModal}: {closeModal: () => void}) => {
     const [isMandatory, setIsMandatory] = useState<boolean>(false);
 
     return (

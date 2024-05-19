@@ -1,4 +1,4 @@
-import {CloseIcon, SelectedIcon, AddPhotoIcon, EditKidIcon, EditItemIcon} from "@/components/shared/Svg";
+import {CloseIcon, SelectedIcon, AddPhotoIcon, EditItemIcon} from "@/components/shared/Svg";
 import {Fragment, useState} from "react";
 import {Listbox, Transition} from "@headlessui/react";
 import { ChevronDown, ChevronUp } from "lucide-react"

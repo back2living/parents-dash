@@ -1,14 +1,6 @@
-import {
-    AddPhotoIcon,
-    CircleCloseIcon,
-    EditItemIcon,
-    SelectedIcon
-} from "@/components/shared/Svg";
+import {CircleCloseIcon, EditItemIcon,} from "@/components/shared/Svg";
 import ModalTop from "@/components/shared/ModalTop";
-import {Listbox, Transition} from "@headlessui/react";
-import {ChevronDown, ChevronUp} from "lucide-react";
-import {Fragment, useState} from "react";
-import {tasks} from "@/constants/data";
+import {useState} from "react";
 import {DatePickerForm} from "@/components/shared/DatePicker";
 
 const EditSavingGoalsModal = ({goal, closeModal}: {goal: any,closeModal: () => void}) => {

@@ -1,10 +1,10 @@
 import {CloseIcon} from "@/components/shared/Svg";
 
-const AddMoney = ({closeModal}: any) => {
+const AddMoney = ({closeModal}: {closeModal: () => void}) => {
     return (
         <div>
             <div className={"flex-center-between"}>
-                <p className={"form-modal-title"}>Add money</p>
+                <p className={"form-modal-title"}>Add point</p>
                 <button onClick={closeModal}>{CloseIcon}</button>
             </div>
 
@@ -19,7 +19,7 @@ const AddMoney = ({closeModal}: any) => {
 
                 <div className={"flex-center gap-6 mt-10"}>
                     <button onClick={closeModal} className={"white-btn"}>Cancel</button>
-                    <button className={"primary-btn"}>Add money</button>
+                    <button className={"primary-btn"}>Add point</button>
                 </div>
             </div>
         </div>
