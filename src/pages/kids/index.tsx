@@ -4,7 +4,7 @@ import Kids from "@/components/routes/kids/Kids";
 
 const KidsPage = () => {
     return (
-        <DashboardLayout title={"KIDS"}>
+        <DashboardLayout title={"Kids"}>
             {/*<NoKids />*/}
             <Kids />
         </DashboardLayout>

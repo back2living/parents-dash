@@ -12,7 +12,7 @@ const Settings = () => {
     const handleTabClick = (tab: string) => setActiveTab(tab);
 
     return (
-        <DashboardLayout title={"SETTINGS"}>
+        <DashboardLayout title={"Settings"}>
             <div>
                 <div className={"mt-6 flex-center flex-wrap gap-2"}>
                     <button onClick={() => handleTabClick("account")} className={cn(activeTab === "account" ? "active-btn" : "inactive-btn")}>Account</button>
