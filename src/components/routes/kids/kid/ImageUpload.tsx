@@ -15,7 +15,7 @@ const ImageUpload = ({file, closeModal}: any) => {
 
                 <div className={"mt-6 lg:mt-12 flex-center gap-6"}>
                     <button onClick={closeModal} className={"white-btn"}>Cancel</button>
-                    <button className={"primary-btn"}>Update image</button>
+                    <button onClick={closeModal} className={"primary-btn"}>Update image</button>
                 </div>
             </div>
         </div>

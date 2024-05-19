@@ -9,7 +9,7 @@ const Kids = () => {
     return (
         <div>
             <div className={"flex-center-between"}>
-                <p className={"text-primary text-md lg:text-lg font-semibold"}>Manage Kids (12)</p>
+                <p className={"text-primary text-md lg:text-lg font-semibold"}>Manage Kids ({kidsData?.length})</p>
                 <button onClick={() => setAddKidModal(true)} className={"w-[150px] lg:w-[200px] primary-btn"}>New kid</button>
             </div>
 

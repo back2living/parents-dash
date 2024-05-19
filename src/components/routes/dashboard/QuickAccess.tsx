@@ -1,4 +1,5 @@
 import Card from "@/components/shared/Card";
+import {kidsData, savingsData, shopData} from "@/constants/data";
 
 const QuickAccess = () => {
     return (
@@ -10,7 +11,7 @@ const QuickAccess = () => {
                 <Card
                     textColor={"white"}
                     text={"Kids added"}
-                    count={1}
+                    count={kidsData.length}
                     img={"kids-bg.webp"}
                     link={{name: "Add kids", path: "/kids", textColor: "#F07846"}}
                 />
@@ -24,14 +25,14 @@ const QuickAccess = () => {
                 <Card
                     textColor={"white"}
                     text={"Items in Storefront"}
-                    count={1}
+                    count={shopData.length}
                     img={"store-bg.webp"}
                     link={{name: "Store Items", path: "/store", textColor: "#FDBA2D"}}
                 />
                 <Card
                     textColor={"white"}
                     text={"Savings created"}
-                    count={1}
+                    count={savingsData.length}
                     img={"savings-bg.webp"}
                     link={{name: "Set up now", path: "/savings", textColor: "#09C2B2"}}
                 />
