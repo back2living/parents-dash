@@ -73,7 +73,7 @@ const MobileNavbar = ({title, setShowNotifications, setShowAccountSummary}: Navb
                 {isOpen && <motion.div className={"fixed bg-black/40 top-0 left-0 z-10 h-full w-full"}
                                        initial={{opacity: 0, x: -15}} animate={{opacity: 1, x: 0}}
                                        exit={{opacity: 0, x: -15}}>
-                    <motion.div className={"bg-white h-full w-[90%]"} variants={mobileVariants} initial={"initial"} animate={"final"} exit={{opacity: 0}}>
+                    <motion.div className={"bg-white h-full w-[90%] max-w-[500px]"} variants={mobileVariants} initial={"initial"} animate={"final"} exit={{opacity: 0}}>
                         <div className={"flex flex-col justify-between h-full gap-10"}>
                             <div className={"w-full"}>
                                 <div className={"p-6 flex-center border-b border-[#EAEAEA] justify-between"}>

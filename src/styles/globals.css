@@ -183,9 +183,9 @@
         height: calc(100% - 80px);
 
         @media (max-width: 1200px) {
-            /*height: calc(100dvh - 64px);*/
+            height: calc(100dvh - 64px);
             /*padding-bottom: 0;*/
-            height: 100%;
+            /*height: 100%;*/
         }
     }
 

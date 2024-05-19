@@ -11,7 +11,7 @@ interface IDashboardLayout {
 
 const DashboardLayout = ({children, title}: IDashboardLayout) => {
     return (
-        <div className={"bg-primary lg:p-6 h-screen"}>
+        <div className={"bg-primary lg:p-6 h-dvh lg:h-screen"}>
             <Title title={`${title} - Playground`} description={"The ultimate platform to build capable and financially responsible kids."} />
 
             <div className={"lg:flex gap-4 h-full"}>
