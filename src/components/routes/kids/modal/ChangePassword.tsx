@@ -10,8 +10,8 @@ const ChangePassword = ({closeModal}: any) => {
             </div>
 
             <div className={"mt-6 flex-column gap-6"}>
-                <PasswordInput />
-                <PasswordInput />
+                <PasswordInput label={""} />
+                <PasswordInput label={""} />
 
                 <div className={"flex gap-6"}>
                     <button onClick={closeModal} className={"white-btn"}>Cancel</button>
