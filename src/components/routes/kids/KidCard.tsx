@@ -5,7 +5,7 @@ import {
     AssignTaskIcon,
     DollarIcon,
     ProfileIcon, RemoveKidIcon,
-    ThreeDotIcon, WithdrawIcon
+    ThreeDotIcon,
 } from "@/components/shared/Svg";
 import FormModal from "@/components/shared/FormModal";
 import AddMoney from "@/components/routes/kids/modal/AddMoney";
@@ -14,7 +14,6 @@ import DoCard from "@/components/routes/kids/modal/DoCard";
 import RemoveKid from "@/components/routes/kids/modal/RemoveKid";
 import Link from "next/link";
 
-const styles = ""
 const KidCard = ({item}: {item: any}) => {
     const [showDropdown, setShowDropdown] = useState<boolean>(false);
     const [showModal, setShowModal] = useState({points: false, doCard: false, task: false, removeKid: false});
@@ -34,10 +33,7 @@ const KidCard = ({item}: {item: any}) => {
 
     return (
         <>
-            <div style={{boxShadow: "0px 8px 24px 0px rgba(17, 17, 17, 0.11)"}} className={"relative bg-[#F7F7F7] rounded-xl w-full lg:w-[18%] lg:max-w-[250px] group"}>
-                {/*<div className={"bg-[#E8E5FA] group-hover:opacity-70 transition-all duration-300 h-40 flex items-end rounded-xl overflow-hidden"}>*/}
-                {/*    <img src={item.img} className={"w-[80%] mx-auto block object-cover"} alt=""/>*/}
-                {/*</div>*/}
+            <div style={{boxShadow: "0px 8px 24px 0px rgba(17, 17, 17, 0.11)"}} className={"kid-card group"}>
                 <div className={"group-hover:opacity-70 w-full transition-all duration-300 h-40 rounded-xl overflow-hidden"}>
                     <img src={item.img} className={"w-full h-full block object-cover"} alt=""/>
                 </div>

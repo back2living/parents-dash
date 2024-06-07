@@ -6,11 +6,12 @@ interface ICardProps {
     text: string;
     textColor: string;
     link?: {name: string, path: string, textColor: string};
+    className?: string;
 }
 
-const Card = ({count, text, img, link, textColor}: ICardProps) => {
+const Card = ({count, text, img, link, textColor, className}: ICardProps) => {
     return (
-        <div className={"relative w-full sm:min-h-[200px] lg:w-[23%] h-[200px] lg:min-h-[164px] p-6"}>
+        <div className={className}>
             <img className={"absolute w-full h-full inset-0 object-cover lg:object-center rounded-[20px]"} src={`/assets/images/${img}`} alt=""/>
 
             <div style={{color: textColor}} className={"relative text-white font-bold"}>

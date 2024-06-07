@@ -1,14 +1,12 @@
 import {CloseIcon} from "@/components/shared/Svg";
+import ModalTop from "@/components/shared/ModalTop";
 
 const RemoveKid = ({closeModal}: {closeModal: () => void}) => {
     return (
         <div>
-            <div className={"flex-center-between"}>
-                <p className={"form-modal-title"}>Remove kid</p>
-                <button onClick={closeModal}>{CloseIcon}</button>
-            </div>
+            <ModalTop title={"Remove kid"} Icon={CloseIcon} closeModal={closeModal} />
 
-            <div className={"mt-10 flex-column gap-10"}>
+            <div className={"modal-content flex-column gap-10"}>
                 <div className={"w-[41%] max-w-[150px] mx-auto"}>
                     <img className={"max-w-full"} src="/assets/images/remove-kid.png" alt=""/>
                 </div>

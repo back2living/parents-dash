@@ -26,22 +26,23 @@ const EditItem = ({closeModal, item}: Props) => {
 
 
     return (
-        <div className={"p-6 h-full"}>
-            <ModalTop title={"Edit store item"} Icon={CircleCloseIcon} closeModal={closeModal} />
+        <div className={""}>
+            <ModalTop title={"Edit store item"} Icon={CircleCloseIcon} closeModal={closeModal}/>
 
-            <div className={"mt-6 lg:mt-10 flex-column gap-6 lg:justify-between"}>
+            <div className={"modal-content flex-column gap-6"}>
                 <div>
                     <p className={"auth-label"}>Photo</p>
                     <div className={"bg-[#F5F5F5] h-[220px] flex-center justify-center rounded-3xl relative"}>
                         <img className={"w-full h-full object-cover rounded-3xl"} src={item.img} alt=""/>
 
-                         {/*TODO: update the image....HINT: Check saving goals.*/}
+                        {/*TODO: update the image....HINT: Check saving goals.*/}
 
                         <label
                             className={"cursor-pointer transition-all duration-300 hover:-rotate-180 absolute top-4 right-4"}
                             htmlFor="images">
                             <span onClick={() => setShowModal(true)}>{EditItemIcon}</span>
-                            <input accept=".jpeg, .jpg, .png" multiple onChange={(e) => handleImageUpload(e)} id={"images"} type="file" hidden/>
+                            <input accept=".jpeg, .jpg, .png" multiple onChange={(e) => handleImageUpload(e)}
+                                   id={"images"} type="file" hidden/>
                         </label>
                     </div>
                 </div>
@@ -49,7 +50,9 @@ const EditItem = ({closeModal, item}: Props) => {
                 <div>
                     <label className={"auth-label"} htmlFor="">Item name</label>
                     <div>
-                        <input onChange={e => setItemName(e.target.value)} className={"auth-input placeholder:text-primary"} placeholder={item.name} value={itemName} type="text"/>
+                        <input onChange={e => setItemName(e.target.value)}
+                               className={"auth-input placeholder:text-primary"} placeholder={item.name}
+                               value={itemName} type="text"/>
                     </div>
                 </div>
 
@@ -68,11 +71,14 @@ const EditItem = ({closeModal, item}: Props) => {
                 <div>
                     <label className={"auth-label"} htmlFor="">Item price</label>
                     <div>
-                        <input className={"auth-input placeholder:text-primary"} placeholder={String(item.amount)} value={itemPrice} type="text"/>
+                        <input className={"auth-input placeholder:text-primary"} placeholder={String(item.amount)}
+                               value={itemPrice} type="text"/>
                     </div>
                 </div>
 
+                <button className={"primary-btn lg:mt-10 xl:mt-16"}>Update</button>
             </div>
+
         </div>
     );
 };

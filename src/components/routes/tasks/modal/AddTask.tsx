@@ -4,6 +4,7 @@ import {Listbox, Transition} from "@headlessui/react";
 import { ChevronDown, ChevronUp } from "lucide-react"
 import {tasks} from "@/constants/data";
 import {DatePickerForm} from "@/components/shared/DatePicker";
+import ModalTop from "@/components/shared/ModalTop";
 
 const Task = ({closeModal}: {closeModal: () => void}) => {
     const [selected, setSelected] = useState(null);
@@ -12,12 +13,9 @@ const Task = ({closeModal}: {closeModal: () => void}) => {
 
     return (
         <div>
-            <div className={"flex-center-between"}>
-                <p className={"form-modal-title"}>Add new task</p>
-                <button onClick={closeModal}>{CloseIcon}</button>
-            </div>
+            <ModalTop title={"Add new task"} Icon={CloseIcon} closeModal={closeModal} />
 
-            <div className={"mt-10 flex-column gap-6"}>
+            <div className={"modal-content flex-column gap-6"}>
                 <div>
                     <label className={"auth-label text-primary"} htmlFor="">Task categories</label>
                     <div>
@@ -178,7 +176,7 @@ const Task = ({closeModal}: {closeModal: () => void}) => {
 
                 <div className={"flex-center gap-6"}>
                     <button onClick={closeModal} className={"white-btn"}>Cancel</button>
-                    <button className={"primary-btn"}>Add money</button>
+                    <button className={"primary-btn"}>Add point</button>
                 </div>
             </div>
         </div>

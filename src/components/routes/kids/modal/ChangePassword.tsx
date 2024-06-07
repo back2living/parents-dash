@@ -1,15 +1,13 @@
 import {CloseIcon} from "@/components/shared/Svg";
 import PasswordInput from "@/components/shared/PasswordInput";
+import ModalTop from "@/components/shared/ModalTop";
 
 const ChangePassword = ({closeModal}: {closeModal: () => void}) => {
     return (
         <div>
-            <div className={"flex-center-between"}>
-                <p className={"form-modal-title"}>Change Password</p>
-                <button onClick={closeModal}>{CloseIcon}</button>
-            </div>
+            <ModalTop title={"Change Password"} Icon={CloseIcon} closeModal={closeModal} />
 
-            <div className={"mt-6 flex-column gap-6"}>
+            <div className={"modal-content flex-column gap-6"}>
                 <PasswordInput label={""} />
                 <PasswordInput label={""} />
 

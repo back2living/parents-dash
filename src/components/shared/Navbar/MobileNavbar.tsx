@@ -1,25 +1,22 @@
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
-import {
-    MenuIcon,
-    ArrowLeftIcon, BellIcon, CloseMenuIcon,
-} from "@/components/shared/Svg";
+import {MenuIcon, ArrowLeftIcon, BellIcon, CloseMenuIcon} from "@/components/shared/Svg";
 import {motion, AnimatePresence} from "framer-motion";
 import Image from "next/image";
 import {sidebarLinks} from "@/constants/data";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
+import UserProfile from "@/components/shared/Navbar/UserProfile";
 
 export type NavbarProp = {
+    isBack?: boolean;
     title: string;
     setShowNotifications: Dispatch<SetStateAction<boolean>>;
-    setShowAccountSummary: Dispatch<SetStateAction<boolean>>;
 }
 
-const MobileNavbar = ({title, setShowNotifications, setShowAccountSummary}: NavbarProp) => {
+const MobileNavbar = ({title, setShowNotifications}: NavbarProp) => {
+    const [showUserProfile, setShowUserProfile] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [showOptions, setShowOptions] = useState(false);
-    const [showLogoutModal, setShowLogoutModal] = useState(false);
 
     // Define the active paths for the Kids link
     const activePaths = ['/kids'];
@@ -63,27 +60,30 @@ const MobileNavbar = ({title, setShowNotifications, setShowAccountSummary}: Navb
             </div>
             <div className={"flex-center gap-4"}>
                 <div className={"flex items-center gap-2"}>
-                    <button onClick={() => setShowAccountSummary(true)}>{BellIcon}</button>
-                    <button>
+                    <button onClick={() => setShowNotifications(true)}>{BellIcon}</button>
+                    <button onClick={() => setShowUserProfile(!showUserProfile)}>
                         <img src="/assets/images/avatar.svg" alt="avatar"/>
                     </button>
                 </div>
             </div>
+
+            {/*---------- USER PROFILE-----------*/}
+            <UserProfile showUserProfile={showUserProfile} setShowUserProfile={setShowUserProfile} />
+
             <AnimatePresence>
                 {isOpen && <motion.div className={"fixed bg-black/40 top-0 left-0 z-10 h-full w-full"}
                                        initial={{opacity: 0, x: -15}} animate={{opacity: 1, x: 0}}
                                        exit={{opacity: 0, x: -15}}>
                     <motion.div className={"bg-white h-full w-[90%] max-w-[500px]"} variants={mobileVariants} initial={"initial"} animate={"final"} exit={{opacity: 0}}>
-                        <div className={"flex flex-col justify-between h-full gap-10"}>
-                            <div className={"w-full"}>
+                        <div className={"flex flex-col justify-between h-full"}>
+                            <div className={"w-full h-full"}>
                                 <div className={"p-6 flex-center border-b border-[#EAEAEA] justify-between"}>
-                                    <Image width={182} height={22} src={"/assets/images/dashboard-logo.svg"}
-                                           alt={"logo"}/>
+                                    <Image width={182} height={22} src={"/assets/images/dashboard-logo.svg"} alt={"logo"}/>
                                     <button onClick={() => setIsOpen(false)}>{CloseMenuIcon}</button>
                                 </div>
 
                                 <div className={"mt-16 pl-2"}>
-                                    <div className={"mt-[100px] px-3 flex-column gap-3"}>
+                                    <div className={"px-3 flex-column gap-3"}>
                                         {sidebarLinks.slice(0, 1).map((link) => <Link href={link.path}
                                                                                       key={link.name}
                                                                                       className={cn(

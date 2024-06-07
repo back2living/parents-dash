@@ -33,11 +33,11 @@ const RequestItem = ({goal}: GoalProps) => {
     return (
         <div className={"flex-between items-start gap-6 bg-primary rounded-xl p-3"}>
             <div className={"flex items-center flex-1 gap-6"}>
-                <div className="w-[200px] h-[120px] rounded-xl gap-2 bg-white">
+                <div className="w-32 h-24 lg:w-[200px] lg:h-[120px] rounded-xl gap-2 bg-white">
                     <img className={"w-full h-full rounded-xl object-cover"} src={goal.itemImg} alt=""/>
                 </div>
                 <div className={"w-full"}>
-                    <div className={"flex  justify-between"}>
+                    <div className={"flex justify-between"}>
                         <p className={"font-medium text-primary"}>{goal.name}</p>
                         <button onClick={() => {
                             handleOpenModal("edit");

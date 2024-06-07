@@ -16,7 +16,7 @@ const Savings = () => {
     return (
         <DashboardLayout title={"Savings"}>
             <div>
-                <div className={"flex-center-between mt-10"}>
+                <div className={"flex-center-between"}>
                     <p className={"text-lg font-semibold text-[#515151]"}>Savings goals</p>
                     <button onClick={() => setAddSavingGoalsModal(true)} className={"primary-btn w-fit font-semibold"}>+ New savings goals</button>
                 </div>
@@ -30,8 +30,6 @@ const Savings = () => {
                 {activeTab === "ongoing" && <OngoingSavings />}
                 {activeTab === "completed" && <CompletedSavings />}
                 {activeTab === "requests" && <SavingRequests />}
-
-
 
                 <FormModal isOpen={addSavingGoalsModal} style={"lg:w-[550px] max-h-full rounded-t-3xl overflow-y-auto lg:mb-0"}>
                     <AddSavingGoals closeModal={() => setAddSavingGoalsModal(false)}/>

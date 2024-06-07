@@ -3,17 +3,15 @@ import {DatePickerForm} from "@/components/shared/DatePicker";
 import {cn} from "@/lib/utils";
 import {useState} from "react";
 import PasswordInput from "@/components/shared/PasswordInput";
+import ModalTop from "@/components/shared/ModalTop";
 
 const AddKid = ({closeModal}: {closeModal: () => void}) => {
     const [isMandatory, setIsMandatory] = useState<boolean>(false);
 
     return (
         <div>
-            <div className={"flex-center-between"}>
-                <p className={"form-modal-title"}>Add a kid</p>
-                <button onClick={closeModal}>{CloseIcon}</button>
-            </div>
-            <div className={"mt-6"}>
+            <ModalTop title={"Add a kid"} Icon={CloseIcon} closeModal={closeModal} />
+            <div className={"modal-content"}>
                 <div className={"flex-column gap-6"}>
                     <div>
                         <label className={"auth-label"} htmlFor="">Photo</label>
@@ -33,12 +31,12 @@ const AddKid = ({closeModal}: {closeModal: () => void}) => {
                         </div>
                     </div>
                     <DatePickerForm/>
-                    <div className={"flex-center gap-4"}>
-                        <div className={"flex-1"}>
+                    <div className={"flex-center flex-column lg:flex-row gap-4"}>
+                        <div className={"w-full lg:flex-1"}>
                             <label className="auth-label">Username</label>
                             <input type="text" placeholder={"Enter username"} className={"auth-input"}/>
                         </div>
-                        <div className={"flex-1"}>
+                        <div className={"w-full lg:flex-1"}>
                             <label className={"auth-label text-[#515151]"} htmlFor="">Gender</label>
                             <div className={"flex-center gap-4"}>
                                 <button onClick={() => setIsMandatory(false)} className={cn(
@@ -65,7 +63,7 @@ const AddKid = ({closeModal}: {closeModal: () => void}) => {
                     <PasswordInput label={""}/>
                     <div className={"flex-center gap-6"}>
                         <button onClick={closeModal} className={"white-btn"}>Cancel</button>
-                        <button className={"primary-btn"}>Add money</button>
+                        <button className={"primary-btn"}>Add point</button>
                     </div>
                 </div>
             </div>

@@ -1,18 +1,16 @@
 import {CloseIcon, SelectedCircle, Circle} from "@/components/shared/Svg";
 import {useState} from "react";
 import {cn} from "@/lib/utils";
+import ModalTop from "@/components/shared/ModalTop";
 
 const DoCard = ({closeModal}: {closeModal: () => void}) => {
     const [isMandatory, setIsMandatory] = useState<boolean>(false);
 
     return (
         <div>
-            <div className={"flex-center-between"}>
-                <p className={"form-modal-title"}>Assign Do-Card</p>
-                <button onClick={closeModal}>{CloseIcon}</button>
-            </div>
+            <ModalTop title={"Assign Do-Card"} Icon={CloseIcon} closeModal={closeModal} />
 
-            <div className={"mt-10 flex-column gap-6"}>
+            <div className={"modal-content flex-column gap-6"}>
                 <div>
                     <label className={"auth-label text-[#515151]"} htmlFor="">Purpose</label>
                     <div className={"w-full relative rounded-[100px]"}>
@@ -52,9 +50,9 @@ const DoCard = ({closeModal}: {closeModal: () => void}) => {
                     <p className={"text-sm text-secondary mt-3"}>Non-mandatory do-cards are paid in 10-folds</p>
                 </div>
 
-                <div className={"flex-center gap-6 mt-10"}>
+                <div className={"flex-center gap-6"}>
                     <button onClick={closeModal} className={"white-btn"}>Cancel</button>
-                    <button className={"primary-btn"}>Add money</button>
+                    <button className={"primary-btn"}>Add point</button>
                 </div>
             </div>
         </div>

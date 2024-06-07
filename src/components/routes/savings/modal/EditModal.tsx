@@ -19,10 +19,10 @@ const EditSavingGoalsModal = ({goal, closeModal}: {goal: any,closeModal: () => v
     console.log(goal);
 
     return (
-        <div className={"p-6 h-full"}>
+        <div className={"h-full"}>
             <ModalTop title={"Edit saving goal request"} Icon={CircleCloseIcon} closeModal={closeModal}/>
 
-            <div className={"mt-6 lg:mt-10 lg:receipt-height flex-column gap-6 lg:justify-between"}>
+            <div className={"modal-content pb-0 lg:receipt-height flex-column gap-6 lg:justify-between"}>
                 <div className={"flex-column gap-6"}>
                     <div>
                         <span className={"auth-label text-primary"}>Photo</span>
@@ -67,7 +67,7 @@ const EditSavingGoalsModal = ({goal, closeModal}: {goal: any,closeModal: () => v
                     </div>
                 </div>
 
-                <div className={"flex-center gap-6"}>
+                <div className={"flex gap-6"}>
                     <button onClick={closeModal} className={"white-btn"}>Cancel</button>
                     <button className={"primary-btn"}>Edit Request</button>
                 </div>

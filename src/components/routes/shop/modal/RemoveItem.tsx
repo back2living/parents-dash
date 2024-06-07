@@ -2,8 +2,8 @@ import {CircleCloseIcon} from "@/components/shared/Svg";
 
 const RemoveItem = ({closeModal}: {closeModal: () => void}) => {
     return (
-        <div className={"relative"}>
-            <button onClick={closeModal} className={"absolute top-0 right-0"}>{CircleCloseIcon}</button>
+        <div className={"relative modal-content pt-6"}>
+            <button onClick={closeModal} className={"absolute top-4 right-4"}>{CircleCloseIcon}</button>
             <h3 className={"form-modal-title text-center"}>Remove item?</h3>
             <p className={"text-secondary text-center mt-4 "}>Are you sure you want to remove this item from the store? This action is not reversible. </p>
 

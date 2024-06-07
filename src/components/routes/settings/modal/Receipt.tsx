@@ -3,10 +3,10 @@ import ModalTop from "@/components/shared/ModalTop";
 
 const Receipt = ({closeModal}: {closeModal: () => void}) => {
     return (
-        <div className={"p-6 h-full"}>
+        <div className={"h-full"}>
             <ModalTop title={"Transaction Receipt"} Icon={CircleCloseIcon} closeModal={closeModal} />
 
-            <div className={"mt-6 lg:mt-10 lg:receipt-height flex-column  lg:justify-between"}>
+            <div className={"modal-content lg:receipt-height flex-column lg:justify-between"}>
                 <div className="text-sm flex-column gap-6">
                     <div className={"flex-center gap-8"}>
                         <p className={"text-primary font-semibold w-[120px]"}>Date</p>

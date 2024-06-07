@@ -1,14 +1,12 @@
 import {CloseIcon} from "@/components/shared/Svg";
+import ModalTop from "@/components/shared/ModalTop";
 
 const AddMoney = ({closeModal}: {closeModal: () => void}) => {
     return (
         <div>
-            <div className={"flex-center-between"}>
-                <p className={"form-modal-title"}>Add point</p>
-                <button onClick={closeModal}>{CloseIcon}</button>
-            </div>
+            <ModalTop title={"Add point"} Icon={CloseIcon} closeModal={closeModal} />
 
-            <div className={"mt-10"}>
+            <div className={"modal-content"}>
                 <div>
                     <label className={"auth-label text-[#515151]"} htmlFor="">Amount</label>
                     <div className={"w-full relative rounded-[100px]"}>

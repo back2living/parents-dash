@@ -8,12 +8,12 @@ const Kids = () => {
     const [addKidModal, setAddKidModal] = useState(false);
     return (
         <div>
-            <div className={"flex-center-between"}>
+            <div className={"flex-center-between mt-4 lg:mt-0"}>
                 <p className={"text-primary text-md lg:text-lg font-semibold"}>Manage Kids ({kidsData?.length})</p>
                 <button onClick={() => setAddKidModal(true)} className={"w-[150px] lg:w-[200px] primary-btn"}>New kid</button>
             </div>
 
-            <div className={"mt-6 lg:mt-10 grid grid-cols-2 gap-4 lg:flex-center lg:flex-wrap lg:gap-6"}>
+            <div className={"kids-grid"}>
                 {kidsData.map((item, index) => <KidCard key={index} item={item}/>)}
             </div>
 

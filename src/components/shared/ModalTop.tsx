@@ -6,9 +6,9 @@ interface Props {
 
 const ModalTop = ({Icon, closeModal, title}: Props) => {
     return (
-        <div className={"flex-center-between"}>
+        <div className={"flex-center-between sticky top-0 bg-white z-50 p-6"}>
             <p className={"form-modal-title"}>{title}</p>
-            <button onClick={closeModal}>{Icon}</button>
+            <button className={"cursor-pointer"} onClick={closeModal}>{Icon}</button>
         </div>
     );
 };

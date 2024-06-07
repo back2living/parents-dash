@@ -2,8 +2,8 @@ import {CircleCloseIcon} from "@/components/shared/Svg";
 
 const DeclineModal = ({closeModal}: {closeModal: () => void}) => {
     return (
-        <div className={"relative"}>
-            <button onClick={closeModal} className={"absolute top-0 right-0"}>{CircleCloseIcon}</button>
+        <div className={"relative modal-content pt-6"}>
+            <button onClick={closeModal} className={"absolute top-4 right-4"}>{CircleCloseIcon}</button>
             <h3 className={"form-modal-title text-center"}>Decline savings request</h3>
             <p className={"text-secondary text-center mt-4 "}>Are you sure you want to decline this savings goal request?</p>
 

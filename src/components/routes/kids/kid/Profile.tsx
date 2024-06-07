@@ -30,7 +30,7 @@ const Profile = () => {
                 </div>
             </div>
 
-            <div className={"flex-center flex-wrap gap-4 mt-10"}>
+            <div className={"flex-center flex-wrap gap-4 mt-10 text-nowrap"}>
                 <button onClick={() => setShowPointsModal(true)} className={"w-[170px] primary-btn lg:flex-1"}>Add money</button>
                 <button onClick={() => setShowPasswordModal(true)} className={"w-fit white-btn lg:flex-1"}>Change password</button>
                 <button onClick={() => setShowRemoveKidModal(true)} className={"text-orange font-semibold lg:flex-1"}>REMOVE KID</button>

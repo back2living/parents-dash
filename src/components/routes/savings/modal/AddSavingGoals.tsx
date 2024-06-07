@@ -24,7 +24,7 @@ const AddSavingGoals = ({closeModal}: {closeModal: () => void}) => {
         <div>
             <ModalTop title={"Add new savings goal"} Icon={CloseIcon} closeModal={closeModal}/>
 
-            <div className={"mt-10 flex-column gap-6"}>
+            <div className={"modal-content flex-column gap-6"}>
                 <div>
                     <span className={"auth-label text-primary"}>Photo</span>
                     {!file && <div className={"w-[300px] h-40 bg-[#f5f5f5] flex-center justify-center rounded-3xl "}>

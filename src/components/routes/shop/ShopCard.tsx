@@ -39,8 +39,8 @@ const ShopCard = ({item}: Props) => {
                     <img className={"w-full h-full object-cover rounded-3xl transition duration-300 group-hover:opacity-80"} src={item.img} alt=""/>
                 </div>
 
-                <button onClick={() => setShowDropdown(prevState => !prevState)} className={"opacity-0 transition duration-300 group-hover:opacity-100 absolute top-4 right-4"}>{ThreeDotIcon}</button>
-                <div className={`${showDropdown ? "opacity-100" : "opacity-0 pointer-events-none"} shadow-country text-xs p-0.5 transition-all duration-300 bg-white rounded-lg z-20 absolute top-11 -right-12 w-[160px] max-w-[200px]`}>
+                <button onClick={() => setShowDropdown(prevState => !prevState)} className={"lg:opacity-0 transition duration-300 lg:group-hover:opacity-100 absolute top-4 right-4"}>{ThreeDotIcon}</button>
+                <div className={`${showDropdown ? "opacity-100" : "opacity-0 pointer-events-none"} shadow-country text-xs p-0.5 transition-all duration-300 bg-white rounded-lg z-20 absolute top-11 right-2 lg:-right-12 w-[160px] max-w-[200px]`}>
                     <button onClick={() => handleOpenAccountModal("editModal")} className={"dropdown-text"}><span>{PencilEditIcon}</span> Edit item</button>
                     <button onClick={() => handleOpenAccountModal("removeModal")} className={"dropdown-text"}><span>{BinIcon}</span> Remove Item</button>
                 </div>
@@ -56,24 +56,10 @@ const ShopCard = ({item}: Props) => {
                 <RemoveItem closeModal={() => handleCloseAccountModal("removeModal")} />
             </FormModal>
 
-            <InfoModal isOpen={showModal.editModal} style={"w-full lg:w-[400px] h-full overflow-y-auto"}>
+            <InfoModal isOpen={showModal.editModal} style={"w-full lg:w-[400px] max-h-full"}>
                 <EditItem item={item} closeModal={() => handleCloseAccountModal("editModal")} />
             </InfoModal>
         </div>
     );
 };
 export default ShopCard;
-
-
-// <div className={"mt-6 flex flex-wrap gap-6"}>
-//                         {shopData.slice(0, 4).map((item, index) => <div key={index}>
-//                             <div
-//                                 className={"h-[200px] w-[270px] py-10 rounded-3xl flex-center justify-center bg-[#F5F5F5]"}>
-//                                 <img className={"w-[45%]"} src={item.img} alt=""/>
-//                             </div>
-//                             <div className={"mt-4"}>
-//                                 <p className={"text-[#515151] font-bold"}>{item.name}</p>
-//                                 <p className={"text-secondary-dark text-sm font-medium mt-2"}>{item.amount} pts</p>
-//                             </div>
-//                         </div>)}
-//                     </div>

@@ -15,7 +15,7 @@ const SavingGoalItem = ({goal, isCompleted}: GoalProps) => {
     return (
         <div className={"flex-between items-start gap-6 bg-primary rounded-xl p-3"}>
             <div className={"flex items-center flex-1 gap-6"}>
-                <div className="w-[200px] h-[120px] rounded-xl gap-2 bg-white">
+                <div className="w-36 h-20 lg:w-[200px] lg:h-[120px] rounded-xl gap-2 bg-white">
                     <img className={"w-full h-full rounded-xl object-cover"} src={goal.itemImg} alt=""/>
                 </div>
                 <div className={"w-full"}>

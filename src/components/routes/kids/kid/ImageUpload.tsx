@@ -1,9 +1,14 @@
-const ImageUpload = ({file, closeModal}: any) => {
+type ImageUploadType = {
+    file: File | null;
+    closeModal: () => void;
+    text?: string;
+}
+const ImageUpload = ({file, closeModal, text}: ImageUploadType) => {
 
     return (
         file && <div>
-            <div>
-                <p className={"form-modal-title"}>Edit image</p>
+            <div className={"p-4 lg:p-6"}>
+                <p className={"form-modal-title"}>{text}</p>
                 <div className={"mt-6 lg:mt-12"}>
                     <div className={"max-w-[500px] rounded-xl"}>
                         <div className={"max-w-[500px] h-[261px] lg:h-[400px] rounded-xl relative"}>

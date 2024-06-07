@@ -5,7 +5,7 @@ import DeleteAccount from "@/components/routes/settings/modal/DeleteAccount";
 import ImageUpload from "@/components/routes/kids/kid/ImageUpload";
 
 const Account = () => {
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState<File | null>(null);
     const [showDeleteAccountModal, setShowDeleteAccountModal] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -36,8 +36,7 @@ const Account = () => {
                                 </label>
                             </div>
                         </div>
-                        {/*{file && <button className={"primary-btn absolute bottom-0 right-60 text-xs w-[140px]"}>Upload*/}
-                        {/*    Image</button>}*/}
+
                     </div>
                     <div className={"lg:flex-center flex-column lg:flex-row gap-4"}>
                         <div className={"flex-1"}>
@@ -77,12 +76,11 @@ const Account = () => {
                 <DeleteAccount closeModal={() => setShowDeleteAccountModal(false)} />
             </FormModal>
 
-            <FormModal isOpen={file}
-                       style={"lg:w-[550px] max-h-full rounded-2xl w-[95%] mx-auto overflow-y-auto mb-8 lg:mb-0"}>
+            <FormModal isOpen={file} style={"lg:w-[550px] max-h-full rounded-2xl w-[95%] mx-auto overflow-y-auto mb-8 lg:mb-0"}>
                 <ImageUpload closeModal={() => {
                     setShowModal(false);
                     setFile(null);
-                }} file={file} />
+                }} file={file} text={"Upload Image"} />
             </FormModal>
         </div>
     );

@@ -124,7 +124,7 @@ export const shopData = [
         description: "UrbanStride sneakers are as comfy as clouds and as cool as can be! Perfect for all your adventures"
     },
     {
-        name: "Skates.png",
+        name: "Skates",
         img: "/assets/images/boombox.webp",
         amount: 3500,
         description: "UrbanStride sneakers are as comfy as clouds and as cool as can be! Perfect for all your adventures"
@@ -236,5 +236,25 @@ export const completedSavingsData =  [
         target: 300,
         profileImage: "/assets/images/smile-girl.webp"
     },
+
+];
+export const categoriesData = [
+    {name: "🌞 Morning tasks", count: 7},
+    {name: "📘 School work", count:2},
+    {name: "🏡 House work", count:1},
+    {name: "🧎🏻‍♂️ Ethics & Values", count:5},
+
+];
+export const notificationsData = [
+    {name: "Nolan", heading: "Task completed", message: "Nolan has marked the task '🍪 Eat breakfast' as completed. ", read: false, img: "/assets/images/boy-smile.webp"},
+    {name: "Grey", heading: "Task completed", message: "Grey has marked the task '🍪 Eat breakfast' as completed. ", read: false, img: "/assets/images/boy-smile.webp"},
+    {name: "Toni", heading: "Task completed", message: "Toni has marked the task '🍪 Eat breakfast' as completed. ", read: false, img: "/assets/images/boy-smile.webp"},
+    {name: "Wesley", heading: "Task completed", message: "Wesley has marked the task '🍪 Eat breakfast' as completed. ", read: false, img: "/assets/images/indian-girl.webp"},
+    {name: "John", heading: "Task completed", message: "John has marked the task '🍪 Eat breakfast' as completed. ", read: false, img: "/assets/images/smile-girl.webp"},
+    {name: "Nolan", heading: "Task completed", message: "Nolan has marked the task '🍪 Eat breakfast' as completed. ", read: false, img: "/assets/images/boy-smile.webp"},
+    {name: "Layla", heading: "Task completed", message: "Layla has marked the task '🍪 Eat breakfast' as completed. ", read: true, img: "/assets/images/boy-smile.webp"},
+    {name: "Jane", heading: "Task completed", message: "Jane has marked the task '🍪 Eat breakfast' as completed. ", read: true, img: "/assets/images/girl-smile.webp"},
+    {name: "Wesley", heading: "Task completed", message: "Wesley has marked the task '🍪 Eat breakfast' as completed. ", read: true, img: "/assets/images/indian-girl.webp"},
+    {name: "John", heading: "Task completed", message: "John has marked the task '🍪 Eat breakfast' as completed. ", read: true, img: "/assets/images/smile-girl.webp"},
 
 ];

@@ -4,6 +4,7 @@ import {useState} from "react";
 import {EditIcon} from "@/components/shared/Svg";
 import ImageUpload from "@/components/routes/kids/kid/ImageUpload";
 import FormModal from "@/components/shared/FormModal";
+import {useRouter} from "next/router";
 
 const styles = {
     active: "bg-[#F7F7F7] text-primary py-2 px-6 rounded-full",
@@ -11,6 +12,13 @@ const styles = {
 }
 
 const KidPage = () => {
+    const {query: {id}} = useRouter();
+    console.log(id);
+
+    // fetch the kid data using the ID.
+    // populate the result.
+    // update the dashboard layout with the kid's name
+
     const [showTasksSection, setShowTasksSection] = useState(false);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [file, setFile] = useState(null);
@@ -23,8 +31,10 @@ const KidPage = () => {
         setSelectedImage([...e.target.files]);
     }
 
+
+
     return (
-        <DashboardLayout showBack title={"KIDS"}>
+        <DashboardLayout showBack title={"Layla"}>
             <div className={"grid grid-cols-1 lg:grid-cols-2 lg:gap-20"}>
                 <div className={"max-w-[600px]"}>
                     <div className={"relative"}>
@@ -89,3 +99,6 @@ const KidPage = () => {
 };
 
 export default KidPage;
+
+
+// export const getServersideProps =

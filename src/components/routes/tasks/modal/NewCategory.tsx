@@ -12,7 +12,7 @@ const NewCategory = ({closeModal}: {closeModal: () => void}) => {
                     <input placeholder={"e.g sneakers"} className={"auth-input"} type="text"/>
                 </div>
 
-                <div className={"flex gap-6 mt-6"}>
+                <div className={"flex-center gap-6 mt-6"}>
                     <button onClick={closeModal} className={"white-btn"}>Cancel</button>
                     <button className={"primary-btn"}>Add category</button>
                 </div>

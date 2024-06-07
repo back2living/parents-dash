@@ -13,7 +13,7 @@ const Shop = () => {
     return (
         <DashboardLayout title={"Shop"}>
             <div className={"pb-10 overflow-hidden"}>
-                <div className={"lg:flex-center-between mt-10"}>
+                <div className={"lg:flex-center-between"}>
                     <p className={"text-md lg:text-lg font-semibold text-[#515151]"}>Store items</p>
 
                     <div className={"font-semibold flex-center gap-4 lg:gap-6 mt-4"}>

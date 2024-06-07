@@ -44,6 +44,7 @@ const config: Config = {
       boxShadow: {
         "btn": "0px -3px 0px 3px rgba(0, 0, 0, 0.15) inset",
         "country": "0px 8px 16px 0px rgba(17, 17, 17, 0.08)",
+        "profile": " 0px 8px 24px 0px rgba(17, 17, 17, 0.11)",
       },
       rotate: {
         "360": "360deg"

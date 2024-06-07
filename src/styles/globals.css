@@ -60,6 +60,28 @@
     gap: 2px !important;
 }
 
+.onboarding > .swiper > .swiper-wrapper {
+    @media (max-width: 1199px) {
+        /*height: 450px !important;*/
+    }
+}
+
+.onboarding > .swiper > .swiper-pagination > .swiper-pagination-bullet {
+    height: 6px !important;
+    width: 6px !important;
+    background: #C0C0C0 !important;
+    border-radius: 100px !important;
+    transition: all 0.4s ease-out !important;
+    /*margin: 0 !important;*/
+    z-index: 10 !important;
+    opacity: 100 !important;
+}
+
+.onboarding > .swiper > .swiper-pagination > .swiper-pagination-bullet-active {
+    width: 28px !important;
+    background: #FFF !important;
+    border-radius: 4px !important;
+}
 
 @tailwind base;
 @tailwind components;
@@ -136,8 +158,9 @@
         @apply text-primary text-sm font-medium mb-2 block;
     }
 
+
     .primary-btn {
-        @apply bg-[#F07846] hover:bg-[#C55C31F2] py-4 px-4 rounded-full text-white w-full shadow-btn custom-transition;
+        @apply bg-[#F07846] hover:bg-[#C55C31F2] py-3 lg:py-4 px-4 rounded-full text-sm lg:text-base text-white w-full shadow-btn custom-transition;
     }
     .white-btn {
         border-radius: 1000px;
@@ -148,6 +171,10 @@
         font-weight: 600;
         width: 100%;
         padding: 16px;
+
+        @media (max-width: 1200px) {
+            padding: 12px 16px;
+        }
     }
 
     /*------------------------ DASHBOARD LAYOUT -------------------------------*/
@@ -214,12 +241,26 @@
         @apply bg-white text-[#F07846] inline-block w-[180px] flex-center justify-center py-3 rounded-full;
     }
 
+    /*-------------------onboarding-overlay------------------*/
+
+    .onboarding-overlay {
+        @apply pt-10 lg:py-10 fixed bg-[#A1A1A1A5] top-0 right-0 bottom-0 left-0 flex justify-center items-end lg:items-center z-50;
+    }
+
+    .dashboard-card {
+        @apply relative w-full sm:min-h-[200px] lg:w-[23%] lg:min-w-[230px] h-[200px] lg:min-h-[164px] p-6;
+    }
+
+    .tasks-card {
+        @apply relative w-full sm:min-h-[150px] lg:w-[23%] h-[150px] lg:min-h-[150px] p-6;
+    }
+
     /*--------MODAL-----------*/
     .form-modal-wrapper {
         @apply pt-10 lg:py-10 fixed bg-[#A1A1A1A5] top-0 right-0 bottom-0 left-0 flex justify-center items-end lg:items-center z-50;
     }
     .form-modal {
-        @apply relative z-50 w-full bg-white lg:rounded-[24px] p-4 lg:p-6 max-w-[600px];
+        @apply relative z-50 w-full bg-white lg:rounded-[24px] max-w-[600px];
     }
     .form-modal-title {
         @apply font-semibold text-lg text-primary;
@@ -234,6 +275,10 @@
     .close-modal {
         @apply cursor-pointer absolute top-0 right-0 center w-6 h-6 rounded-full;
     }
+    .modal-content {
+        @apply px-4 pb-4 lg:px-6 lg:pb-6;
+    }
+
     /*----overlay----*/
     .overlay {
         position: fixed;
@@ -258,7 +303,16 @@
 
     /*------------------- KIDS ---------------------------------------*/
     .kid-card {
-
+        @apply relative bg-[#F7F7F7] rounded-xl w-full lg:w-[18%] lg:max-w-[250px];
+        @media (min-width: 1200px) and (max-width: 1350px) {
+            min-width: 200px !important;
+        }
+    }
+    .kids-grid {
+        @apply mt-6 lg:mt-10 grid grid-cols-2 gap-4 lg:flex-center lg:flex-wrap lg:gap-6;
+        @media (min-width: 1200px) and (max-width: 1350px) {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
     }
 
     .dropdown-text {

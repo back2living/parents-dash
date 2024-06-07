@@ -4,7 +4,7 @@ import SavingGoalItem from "@/components/routes/savings/SavingGoalItem";
 
 const Savings = () => {
     return (
-        <div className={"w-full lg:w-[48.5%] max-w-[700px] mt-14"}>
+        <div className={"w-full lg:w-[48.5%] lg:max-w-[700px] mt-14"}>
             <div className={"flex-center-between"}>
                 <p className={"text-lg font-semibold text-[#515151]"}>Savings</p>
                 <p className={"text-orange font-semibold text-sm"}>All savings</p>

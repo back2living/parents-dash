@@ -30,7 +30,7 @@ const NewItem = ({closeModal}: {closeModal: () => void}) => {
         <div>
             <ModalTop title={"Add new item"} Icon={CloseIcon} closeModal={closeModal}/>
 
-            <div className={"mt-10 flex-column gap-6"}>
+            <div className={"modal-content flex-column gap-6"}>
                 <div>
                     <span className={"auth-label text-primary"}>Photo</span>
                     {!file && <div className={"w-[300px] h-40 bg-[#f5f5f5] flex-center justify-center rounded-3xl "}>
@@ -130,7 +130,7 @@ const NewItem = ({closeModal}: {closeModal: () => void}) => {
                     </div>
                 </div>
 
-                <div className={"flex-center gap-6"}>
+                <div className={"flex gap-6"}>
                     <button onClick={closeModal} className={"white-btn"}>Cancel</button>
                     <button className={"primary-btn"}>Add item</button>
                 </div>

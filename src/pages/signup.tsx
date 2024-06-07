@@ -10,9 +10,7 @@ const Signup = () => {
     return (
         <AuthLayout>
             <div className={"max-w-[450px]"}>
-                <Link href={"/signin"}>
-                    <img src="/assets/images/logo.svg" alt=""/>
-                </Link>
+                <Link href={"/signin"}><img src="/assets/images/logo.svg" alt=""/></Link>
                 {!showVerifyEmailForm && <div className={"mt-14"}>
                     <div>
                         <p className={"auth-title"}>Sign up</p>
@@ -44,9 +42,7 @@ const Signup = () => {
                         </button>
                     </div>
                 </div>}
-
                 {showVerifyEmailForm && <VerifyEmail />}
-
             </div>
 
             {!showVerifyEmailForm && <p className={"text-grey text-sm text-center"}>By continuing, you agree to our {" "}<Link className={"text-[#F07846]"} href="/">Terms of Service</Link> and <Link className={"text-[#F07846]"} href="/">Privacy Policy</Link></p>}
