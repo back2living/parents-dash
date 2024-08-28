@@ -1,5 +1,5 @@
-import NoBillingHistory from "@/components/routes/settings/NoBillingHistory";
-import BillingHistory from "@/components/routes/settings/BillingHistory";
+// import NoBillingHistory from "@/components/routes/settings/NoBillingHistory";
+// import BillingHistory from "@/components/routes/settings/BillingHistory";
 
 const Subscription = () => {
     return (

@@ -32,6 +32,8 @@ const config: Config = {
         "secondary": "#A1A1A1",
         "orange": "#F07846",
         "yellow": "#FDBA2D",
+        "green": "#09C2B2",
+        "purple": "#AF70EE",
       },
       backgroundColor: {
         "primary": "#F7F7F7",

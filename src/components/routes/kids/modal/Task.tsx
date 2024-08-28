@@ -42,7 +42,7 @@ const Task = ({closeModal}: {closeModal: () => void}) => {
                                                 <Listbox.Option
                                                     onClick={() => setIsFocus(false)}
                                                     key={personIdx}
-                                                    className={({active}) => `rounded-lg relative cursor-default py-2 text-primary  ${active ? 'bg-[#F9FAFB]' : ''}`}
+                                                    className={({active}) => `rounded-lg relative cursor-default py-2 text-primary  ${active ? "bg-[#F9FAFB]" : ""}`}
                                                     value={item}
                                                 >
 
@@ -87,7 +87,7 @@ const Task = ({closeModal}: {closeModal: () => void}) => {
                                                 <Listbox.Option
                                                     onClick={() => setIsTaskFocused(false)}
                                                     key={personIdx}
-                                                    className={({active}) => `rounded-lg relative cursor-default py-2 text-primary  ${active ? 'bg-[#F9FAFB]' : ''}`}
+                                                    className={({active}) => `rounded-lg relative cursor-default py-2 text-primary  ${active ? "bg-[#F9FAFB]" : ""}`}
                                                     value={item}
                                                 >
 

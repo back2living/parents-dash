@@ -1,6 +1,8 @@
+import {ReactNode} from "react";
+
 interface Props {
     title: string
-    Icon: any
+    Icon: ReactNode
     closeModal: () => void
 }
 

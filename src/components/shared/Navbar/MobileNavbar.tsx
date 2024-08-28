@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {MenuIcon, ArrowLeftIcon, BellIcon, CloseMenuIcon} from "@/components/shared/Svg";
 import {motion, AnimatePresence} from "framer-motion";
 import Image from "next/image";
@@ -7,25 +7,39 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
 import UserProfile from "@/components/shared/Navbar/UserProfile";
+import GoBack from "@/components/shared/GoBack";
+import {useCurrentUser} from "@/store/auth/authStore";
 
 export type NavbarProp = {
-    isBack?: boolean;
+    goBack?: boolean;
     title: string;
     setShowNotifications: Dispatch<SetStateAction<boolean>>;
 }
 
-const MobileNavbar = ({title, setShowNotifications}: NavbarProp) => {
+export const mobileVariants = {
+    initial: {
+        opacity: 0,
+        transition: {},
+        left: "-100px",
+    },
+    final: {
+        opacity: 1,
+        transition: {},
+        left: "0px",
+    }
+}
+
+const MobileNavbar = ({title, setShowNotifications, goBack}: NavbarProp) => {
     const [showUserProfile, setShowUserProfile] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState(false);
 
     // Define the active paths for the Kids link
-    const activePaths = ['/kids'];
+    const activePaths = ["/kids"];
 
     // Check if the current route matches any of the active paths
     const router = useRouter();
     const {pathname} = useRouter();
     const isActive = activePaths.some((path) => pathname.startsWith(path));
-    const isKidsActive = ["kids"].includes(pathname);
 
     useEffect(() => {
         if (isOpen) {
@@ -35,46 +49,40 @@ const MobileNavbar = ({title, setShowNotifications}: NavbarProp) => {
         }
     }, [isOpen]);
 
-    const mobileVariants = {
-        initial: {
-            opacity: 0,
-            transition: {},
-            left: "-100px",
-        },
-        final: {
-            opacity: 1,
-            transition: {},
-            left: "0px",
-        }
-    }
     const handleGoToPreviousPage = () => router.back();
 
     const showArrowIcon = (title === "User Level" || title === "Rate Alert" || title === "Get Mobile Apps" || title === "Referrals");
+    const currentUser = useCurrentUser();
 
     return (
-        <div className={"h-16 flex-center justify-between lg:hidden relative"}>
-            <button onClick={() => setIsOpen(true)}>{MenuIcon}</button>
-            <div className={"flex-center gap-2"}>
-                {showArrowIcon && <span className={"cursor-pointer"} onClick={handleGoToPreviousPage}>{ArrowLeftIcon}</span>}
-                <p className={"text-md text-[#777777] font-semibold"}>{title}</p>
-            </div>
-            <div className={"flex-center gap-4"}>
-                <div className={"flex items-center gap-2"}>
-                    <button onClick={() => setShowNotifications(true)}>{BellIcon}</button>
-                    <button onClick={() => setShowUserProfile(!showUserProfile)}>
-                        <img src="/assets/images/avatar.svg" alt="avatar"/>
-                    </button>
+        <div className={"h-16 flex items-center lg:hidden relative"}>
+            {!goBack && <div className={"h-full w-full flex-center justify-between"}>
+                <button onClick={() => setIsOpen(true)}>{MenuIcon}</button>
+                <div className={"flex-center gap-2"}>
+                    {showArrowIcon &&
+                        <span className={"cursor-pointer"} onClick={handleGoToPreviousPage}>{ArrowLeftIcon}</span>}
+                    <p className={"text-md text-[#777777] font-semibold"}>{title}</p>
                 </div>
-            </div>
+                <div className={"flex-center gap-4"}>
+                    <div className={"flex items-center gap-2"}>
+                        <button onClick={() => setShowNotifications(true)}>{BellIcon}</button>
+                        <button onClick={() => setShowUserProfile(!showUserProfile)}>
+                            <img className={"h-7 w-7 md:w-8 md:h-8 rounded-full"} src={currentUser?.avatar || "/assets/images/avatar.svg"} alt="avatar"/>
+                        </button>
+                    </div>
+                </div>
+            </div>}
+
+            {goBack && <GoBack />}
 
             {/*---------- USER PROFILE-----------*/}
-            <UserProfile showUserProfile={showUserProfile} setShowUserProfile={setShowUserProfile} />
-
+            <UserProfile showUserProfile={showUserProfile} setShowUserProfile={setShowUserProfile}/>
             <AnimatePresence>
                 {isOpen && <motion.div className={"fixed bg-black/40 top-0 left-0 z-10 h-full w-full"}
                                        initial={{opacity: 0, x: -15}} animate={{opacity: 1, x: 0}}
                                        exit={{opacity: 0, x: -15}}>
-                    <motion.div className={"bg-white h-full w-[90%] max-w-[500px]"} variants={mobileVariants} initial={"initial"} animate={"final"} exit={{opacity: 0}}>
+                    <motion.div className={"bg-white h-full w-[90%] max-w-[500px]"} variants={mobileVariants}
+                                initial={"initial"} animate={"final"} exit={{opacity: 0}}>
                         <div className={"flex flex-col justify-between h-full"}>
                             <div className={"w-full h-full"}>
                                 <div className={"p-6 flex-center border-b border-[#EAEAEA] justify-between"}>
@@ -106,7 +114,6 @@ const MobileNavbar = ({title, setShowNotifications}: NavbarProp) => {
                                             <span
                                                 className={cn("text-secondary font-semibold uppercase", (link.path === pathname || isActive) && "text-orange")}>{link.name}</span>
                                         </Link>)}
-
                                         {sidebarLinks.slice(2, 6).map((link) => <Link href={link.path}
                                                                                       key={link.name}
                                                                                       className={cn(

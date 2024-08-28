@@ -1,8 +1,13 @@
 import {AnimatePresence, motion} from "framer-motion";
 import Head from "next/head";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 
-const FormModal = ({isOpen, children, style}: any) => {
+export interface IModal {
+    isOpen: boolean;
+    children: React.ReactNode;
+    style: string
+}
+const FormModal = ({isOpen, children, style}: IModal) => {
     useEffect(() => {
         if (isOpen) {
             document.body.classList.add("overlay");

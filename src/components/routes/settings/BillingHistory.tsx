@@ -1,4 +1,4 @@
-import NoBillingHistory from "@/components/routes/settings/NoBillingHistory";
+// import NoBillingHistory from "@/components/routes/settings/NoBillingHistory";
 import BillingTable from "@/components/routes/settings/BillingTable";
 
 const BillingHistory = () => {

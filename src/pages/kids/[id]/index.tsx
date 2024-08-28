@@ -1,104 +1,66 @@
 import DashboardLayout from "@/layouts/DashboardLayout";
-import {Profile, SavingGoals, RecentDoCards, RecentTasks, Activity, Allowance, StoreItem} from "@/components/routes/kids/kid";
-import {useState} from "react";
-import {EditIcon} from "@/components/shared/Svg";
-import ImageUpload from "@/components/routes/kids/kid/ImageUpload";
-import FormModal from "@/components/shared/FormModal";
-import {useRouter} from "next/router";
-
-const styles = {
-    active: "bg-[#F7F7F7] text-primary py-2 px-6 rounded-full",
-    inactive: "text-secondary py-2 px-6"
-}
+import {cn} from "@/lib/utils";
+import KidProfile from "@/components/routes/kids/kid/KidProfile";
+import KidChecklist from "@/components/routes/kids/kid/KidChecklist";
+import KidDoCards from "@/components/routes/kids/kid/do-cards/KidDoCards";
+import {useFetchKid} from "@/hooks/useKids";
+import {useCurrentKid, useKidActiveTab, useSetKidActiveTab} from "@/store/kid/kidStore";
 
 const KidPage = () => {
-    const {query: {id}} = useRouter();
-    console.log(id);
+    const activeTab = useKidActiveTab();
+    const setActiveTab = useSetKidActiveTab();
 
-    // fetch the kid data using the ID.
-    // populate the result.
-    // update the dashboard layout with the kid's name
+    const handleTabClick = (tab: string) => setActiveTab(tab);
 
-    const [showTasksSection, setShowTasksSection] = useState(false);
-    const [showModal, setShowModal] = useState<boolean>(false);
-    const [file, setFile] = useState(null);
-    const [URLS, setURLS] = useState(null);
-    const [selectedImages, setSelectedImage] = useState<any>([]);
+    const currentKid = useCurrentKid();
+    const {data, isPending} = useFetchKid(currentKid?._id || "");
+    
+    if (isPending) {
+        return (
+            <DashboardLayout showBack title={currentKid?.firstName || "Kid..."}>
+                <div className={"mt-6 flex-center flex-wrap gap-2 mb-10"}>
+                    <button className={"h-14 w-44 rounded-full bg-animate"} />
+                    <button className={"h-14 w-44 rounded-full bg-animate"} />
+                    <button className={"h-14 w-44 rounded-full bg-animate"} />
+                </div>
 
-    const handleImageUpload = (e: any) => {
-        const selectedImage = e.target.files[0];
-        setFile(selectedImage);
-        setSelectedImage([...e.target.files]);
+                <div className={"grid grid-cols-1 lg:grid-cols-2 lg:gap-20"}>
+                    <div className={"max-w-[600px]"}>
+                        <div className={"mt-10 rounded-2xl bg-animate hidden md:block lg:min-h-[100px]"}/>
+                        <div className={"mt-10 rounded-2xl bg-animate hidden md:block lg:min-h-[200px]"}/>
+                        <div className={"mt-10 rounded-2xl bg-animate hidden md:block lg:min-h-[400px]"}/>
+
+                    </div>
+
+                    <div className={"max-w-[600px]"}>
+                        <div className={"mt-10 rounded-2xl bg-animate hidden md:block lg:min-h-[350px]"}/>
+                        <div className={"mt-10 rounded-2xl bg-animate hidden md:block lg:min-h-[350px]"}/>
+                        <div className={"mt-10 rounded-2xl bg-animate hidden md:block lg:min-h-[350px]"}/>
+
+                    </div>
+                </div>
+            </DashboardLayout>
+        )
     }
 
-
-
     return (
-        <DashboardLayout showBack title={"Layla"}>
-            <div className={"grid grid-cols-1 lg:grid-cols-2 lg:gap-20"}>
-                <div className={"max-w-[600px]"}>
-                    <div className={"relative"}>
-                        <div className={"rounded-3xl"}>
-                            <img className={"rounded-3xl object-cover"} src={"/assets/images/girl-smile.webp"} alt=""/>
-                        </div>
-
-                        <label
-                            className={"cursor-pointer transition-all duration-300 hover:rotate-[360deg] absolute top-2 right-2"}
-                            htmlFor="images">
-                            <span onClick={() => setShowModal(true)}>{EditIcon}</span>
-                            <input accept=".jpeg, .jpg, .png" multiple onChange={(e) => handleImageUpload(e)}
-                                   id={"images"} type="file" hidden/>
-                        </label>
-                    </div>
-                    <div className={"flex-center gap-2 mt-6 lg:hidden transition-all duration-300 font-medium"}>
-                        <button className={!showTasksSection ? styles.active : styles.inactive}
-                                onClick={() => setShowTasksSection(false)}>Profile
-                        </button>
-                        <button className={showTasksSection ? styles.active : styles.inactive}
-                                onClick={() => setShowTasksSection(true)}>Task
-                        </button>
-                    </div>
-
-                    <div className={"hidden lg:block"}>
-                        <Profile/>
-                        <Allowance/>
-                        <Activity/>
-                    </div>
-
-                    {!showTasksSection && <div className={"lg:hidden"}>
-                        <Profile/>
-                        <Allowance/>
-                        <Activity/>
-                    </div>}
-                </div>
-
-                <div className={"hidden max-w-[600px] mt-4 lg:mt-0 lg:flex-column gap-10"}>
-                    <RecentTasks/>
-                    <RecentDoCards/>
-                    <SavingGoals/>
-                    <StoreItem/>
-                </div>
-
-                {showTasksSection && <div className={"lg:hidden max-w-[600px] mt-4 lg:mt-0 flex-column gap-10"}>
-                    <RecentTasks/>
-                    <RecentDoCards/>
-                    <SavingGoals/>
-                    <StoreItem/>
-                </div>}
+        <DashboardLayout showBack title={currentKid?.firstName}>
+            <div className={"mt-6 flex-center flex-wrap gap-2 mb-10"}>
+                <button onClick={() => handleTabClick("profile")}
+                        className={cn(activeTab === "profile" ? "active-btn" : "inactive-btn")}>Profile
+                </button>
+                <button onClick={() => handleTabClick("checklists")}
+                        className={cn(activeTab === "checklists" ? "active-btn" : "inactive-btn")}>Checklists
+                </button>
+                <button onClick={() => handleTabClick("do-cards")} className={cn(activeTab === "do-cards" ? "active-btn" : "inactive-btn")}>Do-Cards</button>
             </div>
 
-            <FormModal isOpen={file}
-                       style={"lg:w-[550px] max-h-full rounded-2xl w-[95%] mx-auto overflow-y-auto mb-8 lg:mb-0"}>
-                <ImageUpload closeModal={() => {
-                    setShowModal(false);
-                    setFile(null);
-                }} file={file} />
-            </FormModal>
+            {activeTab === "profile" && <KidProfile kidData={data?.data}/>}
+            {activeTab === "checklists" && <KidChecklist kidData={data?.data} />}
+            {activeTab === "do-cards" && <KidDoCards kidData={data?.data} />}
+
         </DashboardLayout>
     );
 };
 
 export default KidPage;
-
-
-// export const getServersideProps =

@@ -9,7 +9,7 @@ interface IDashboardLayout {
     showBack?: boolean;
 }
 
-const DashboardLayout = ({children, title}: IDashboardLayout) => {
+const DashboardLayout = ({children, title, showBack}: IDashboardLayout) => {
     return (
         <div className={"bg-primary lg:p-6 h-dvh lg:h-screen"}>
             <Title title={`${title} - Playground`} description={"The ultimate platform to build capable and financially responsible kids."} />
@@ -17,7 +17,7 @@ const DashboardLayout = ({children, title}: IDashboardLayout) => {
             <div className={"lg:flex gap-4 h-full"}>
                 <Sidebar/>
                 <div className={"dashboard-container"}>
-                    <Navbar title={title!}/>
+                    <Navbar goBack={showBack} title={title!}/>
                     <div className={"dashboard-children-wrapper"}>
                         <div className={"dashboard-children-container"}>
                             {children}

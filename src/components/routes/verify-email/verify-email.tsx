@@ -1,14 +1,67 @@
 import useOtpInput from "@/hooks/useOtpInput";
+import useCountdown from "@/hooks/useCountdown";
+import {useEffect, useState} from "react";
+import instance, {baseUrl} from "@/api/instance";
+import toast from "react-hot-toast";
+import {useRouter} from "next/router";
+import Button from "@/components/shared/Button";
 
-const VerifyEmail = () => {
-    const {otp, inputRefs, handleInputChange, handleBackspace, isButtonActive, otpCode: pinCode} = useOtpInput(4);
+interface IProps {
+    token: string;
+}
+const styles = {
+    active: "opacity-100 cursor-pointer pointer-events-auto text-orange ml-1",
+    inactive: "opacity-50 pointer-events-none text-orange ml-1",
+}
+
+const VerifyEmail = ({token}: IProps) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
+    const {otp, inputRefs, handleInputChange, handleBackspace, isButtonActive, otpCode} = useOtpInput(4);
+    const {start, secondsLeft} = useCountdown();
+
+    useEffect(() => {
+        start(59);
+    }, []);
+
+    const formattedTime = secondsLeft < 10 ? `0${secondsLeft}` : secondsLeft;
+    const userEmail =  localStorage.getItem("userRegistrationEmail");
+
+    const verifyUserEmail = async () => {
+        setIsLoading(true)
+        try {
+            const {data} = await instance.put(`${baseUrl}/auth/verification`, {token, code: otpCode});
+            toast.success(data?.message);
+            await router.push("/signin");
+        } catch (err: any) {
+            toast.error(err?.response?.data?.message)
+        } finally {
+            setIsLoading(false);
+        }
+    }
+    const resendEmailVerificationLink = async () => {
+        setIsLoading(true);
+        try {
+            const {data} = await instance.post(`${baseUrl}/auth/verification`, {email: userEmail});
+            toast.success(data?.message);
+        } catch (err: any) {
+            toast.error(err?.data?.response?.message)
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    const handleResendVerification = async () => {
+        start(59);
+        await resendEmailVerificationLink();
+    }
 
     return (
         <div>
             <div className={"mt-32 flex-column gap-12"}>
                 <div>
                     <p className={"auth-title"}>Verify your email</p>
-                    <p className={"auth-text mt-2"}>Enter the OTP code sent to <span className={"text-primary"}>sikal@gmail.com</span>.</p>
+                    <p className={"auth-text mt-2"}>Enter the OTP code sent to <span className={"text-primary"}>{userEmail}</span>.</p>
                 </div>
 
                 <div>
@@ -23,7 +76,7 @@ const VerifyEmail = () => {
                                 value={digit}
                                 onChange={(e) => handleInputChange(index, e.target.value)}
                                 onKeyDown={(e) => {
-                                    if (e.key === 'Backspace') {
+                                    if (e.key === "Backspace") {
                                         handleBackspace(index);
                                     }
                                 }}
@@ -31,10 +84,13 @@ const VerifyEmail = () => {
                         ))}
                     </div>
 
-                    <p className={"text-secondary mt-4 text-center"}>Didn’t get the code? <button className={"text-orange"}>Try again</button></p>
+                    <p className={"mt-4 text-center text-secondary dark:text-secondary-dark"}>Didn’t get the code?
+                        <button onClick={handleResendVerification} className={`${secondsLeft === 0 ? styles.active : styles.inactive}`}>Try again.</button> {secondsLeft > 0 && <span>0:{formattedTime}</span>}
+                    </p>
                 </div>
 
-                <button className={"primary-btn"}>Submit</button>
+                <Button handleClick={verifyUserEmail} isLoading={isLoading} isValid={isButtonActive} name={"Submit"} />
+                {/*<button onClick={verifyUserEmail} disabled={!isValid || isLoading} className={"primary-btn"}>{!isLoading ? "Submit" : <span className={"animate-spin"}>{SpinnerIcon}</span>}</button>*/}
 
             </div>
         </div>

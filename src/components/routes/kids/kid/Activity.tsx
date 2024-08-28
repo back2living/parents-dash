@@ -7,8 +7,8 @@ import {
     Title,
     Tooltip,
     Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
     CategoryScale,
@@ -21,10 +21,10 @@ ChartJS.register(
 );
 
 const Activity = () => {
-    const labels = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+    const labels = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];
     const revenue = ["100", "200", "400", "400", "0", "400", "500", "300"];
 
-    const options: {} = {
+    const options = {
         responsive: true,
         plugins: {
             legend: {
@@ -63,15 +63,15 @@ const Activity = () => {
             }
         }
     };
-    const data: any = {
+    const data = {
         labels,
         datasets: [
             {
                 fill: true,
                 data: revenue,
-                borderColor: '#FAD2C1',
+                borderColor: "#FAD2C1",
                 // backgroundColor: "rgba(255, 99, 132, 0.01)",
-                pointBackgroundColor: '#F07846',
+                pointBackgroundColor: "#F07846",
                 pointRadius: 4,
             },
         ],
@@ -88,5 +88,4 @@ const Activity = () => {
         </div>
     );
 };
-
 export default Activity;

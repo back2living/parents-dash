@@ -2,17 +2,18 @@ import {BigDollarIcon, WalletIcon} from "@/components/shared/Svg";
 import FormModal from "@/components/shared/FormModal";
 import {useState} from "react";
 import AddMoney from "@/components/routes/kids/modal/AddMoney";
+import {IKid} from "@/hooks/useKids";
 
 const balanceStyle = "border-2 border-[#ECECEC] bg-white rounded-xl p-4 flex gap-4 flex-1"
-const Allowance = () => {
+const Allowance = ({kidData}: {kidData: IKid}) => {
     const [showPointModal, setShowPointModal] = useState<boolean>(false);
     return (
         <div>
-            <div className={"border-t border-2 border-[#ECECEC] my-6 "}/>
+            <div className={"my-10"}/>
             <div>
                 <div className={"flex-center-between mb-4"}>
-                    <p className={"text-md text-primary font-semibold"}>Allowance</p>
-                    <button onClick={() => setShowPointModal(true)} className={"text-sm text-orange font-semibold underline"}>Add allowance</button>
+                    <p className={"text-md text-primary font-semibold"}>Points</p>
+                    <button onClick={() => setShowPointModal(true)} className={"text-sm text-orange font-semibold underline"}>Add points</button>
                 </div>
 
                 <div className={"flex-center gap-6"}>
@@ -20,7 +21,7 @@ const Allowance = () => {
                         <span>{WalletIcon}</span>
                         <div>
                             <p className={"text-sm text-secondary"}>Balance</p>
-                            <p className={"text-primary font-semibold"}>5,000 pts</p>
+                            <p className={"text-primary font-semibold"}>{kidData.points.toLocaleString("en-US")} pts</p>
                         </div>
                     </div>
                     <div className={balanceStyle}>

@@ -1,0 +1,58 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended"
+//    "next",
+//    "next/core-web-vitals"
+  ],
+  "rules": {
+    "prefer-const": 0,
+    "no-extra-semi": 0,
+    "@typescript-eslint/no-extra-semi": "off",
+    "lines-around-comment": "off",
+    "@typescript-eslint/lines-around-comment": "off",
+    "no-unused-vars": 0,
+    "quotes": [
+      "error",
+      "double",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "@typescript-eslint/quotes": 0,
+    "semi": "off",
+    "@typescript-eslint/semi": "off",
+    "eqeqeq": ["error", "always"],
+    "@typescript-eslint/keyword-spacing": 0,
+    "@typescript-eslint/key-spacing": "off",
+    "no-unsafe-finally": "error",
+    "no-unreachable": "error",
+    "no-debugger": "error",
+    "no-empty-pattern": "error",
+    "no-self-compare": "error",
+    "@typescript-eslint/object-curly-spacing": 0,
+    "curly": ["error", "multi-line"],
+    "@typescript-eslint/ban-types": 0,
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "root": true
+}

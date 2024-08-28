@@ -4,6 +4,7 @@ import {LogoutIcon, ProfileSettingsIcon, SupportIcon} from "@/components/shared/
 import {Dispatch, LegacyRef, SetStateAction, useState} from "react";
 import FormModal from "@/components/shared/FormModal";
 import LogoutModal from "@/components/shared/Navbar/modal/LogoutModal";
+import {useCurrentUser} from "@/store/auth/authStore";
 
 interface IUSerProfile {
     showUserProfile: boolean;
@@ -13,6 +14,8 @@ interface IUSerProfile {
 
 const UserProfile = ({showUserProfile, ref, setShowUserProfile}: IUSerProfile) => {
     const [showLogoutModal, setShowLogoutModal] = useState<boolean>(false);
+    const currentUser = useCurrentUser();
+
 
     return (
         <>
@@ -22,14 +25,14 @@ const UserProfile = ({showUserProfile, ref, setShowUserProfile}: IUSerProfile) =
             )}>
                 <div className={"p-4 flex-center gap-2 border-b border-b-[#ECECEC]"}>
                     <div className="left">
-                        <img className={"h-[33px]"} src="/assets/images/avatar.svg" alt=""/>
+                        <img className={"rounded-full w-8 h-8"} src={currentUser?.avatar || "/assets/images/avatar.svg"} alt=""/>
                     </div>
                     <div className="right flex-column">
-                        <span className={"text-primary"}>Asher Kyle</span>
+                        <span className={"text-primary"}>{currentUser?.firstName} {currentUser?.lastName}</span>
                         <span>Parent</span>
                     </div>
                 </div>
-                <Link href={'/settings'} className={"flex-center gap-2 p-4"}>
+                <Link onClick={() => setShowUserProfile(false)} href={"/settings"} className={"flex-center gap-2 p-4"}>
                     <span>{ProfileSettingsIcon}</span>
                     <span>Settings</span>
                 </Link>
@@ -46,7 +49,7 @@ const UserProfile = ({showUserProfile, ref, setShowUserProfile}: IUSerProfile) =
                 </button>
             </div>
 
-            <FormModal isOpen={showLogoutModal} style={"lg:w-[450px] rounded-t-3xl max-h-full overflow-y-auto lg:mb-0"}>
+            <FormModal isOpen={showLogoutModal} style={"lg:w-[450px] w-[95%] rounded-3xl mb-8 lg:rounded-t-3xl max-h-full overflow-y-auto lg:mb-0"}>
                 <LogoutModal closeModal={() => setShowLogoutModal(false)}/>
             </FormModal>
         </>

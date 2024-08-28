@@ -1,7 +1,8 @@
 import {AnimatePresence, motion} from "framer-motion";
 import {useEffect} from "react";
+import {IModal} from "@components/shared/FormModal";
 
-const InfoModal = ({isOpen, children, style}: any) => {
+const InfoModal = ({isOpen, children, style}: IModal) => {
     useEffect(() => {
         if (isOpen) {
             document.body.classList.add("overlay");

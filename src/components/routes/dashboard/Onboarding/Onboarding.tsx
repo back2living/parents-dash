@@ -1,26 +1,29 @@
-import {Dispatch, SetStateAction} from "react";
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {Pagination, Autoplay, Navigation} from 'swiper/modules';
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Pagination, Autoplay, Navigation} from "swiper/modules";
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+import {useOnboardUser} from "@/hooks/useUsers";
+import {useCurrentUser, useSetCurrentUser} from "@/store/auth/authStore";
 
 const NextButton = () => {
     return (
         <button className={"w-full lg:w-[192px] next-btn white-btn text-primary"}>Next</button>
     )
 }
-const SkipButton = ({closeModal}: { closeModal: () => void }) => {
-    return (
-        <button onClick={closeModal} className={'w-full py-4 lg:py-0 lg:w-[192px] text-white'}>Skip</button>
-    )
-}
+// const SkipButton = ({closeModal}: { closeModal: () => void }) => {
+//     return (
+//         <button onClick={closeModal} className={"w-full py-4 lg:py-0 lg:w-[192px] text-white"}>Skip</button>
+//     )
+// }
 
-const Onboarding = ({setShowOnboardingModal}: {setShowOnboardingModal: Dispatch<SetStateAction<boolean>>}) => {
+const Onboarding = () => {
+    const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
+    const {mutate, isPending} = useOnboardUser(setCurrentUser, currentUser);
 
-    const closeModal = () => setShowOnboardingModal(false);
+    const handleOnboardUser = () => mutate();
 
     return (
         <div className={"onboarding-overlay"}>
@@ -51,7 +54,7 @@ const Onboarding = ({setShowOnboardingModal}: {setShowOnboardingModal: Dispatch<
                                 <div className={"flex-center lg:flex-row flex-column gap-4"}>
                                     <NextButton/>
                                     {/*<button onClick={closeModal} className={'w-[192px] text-white'}>Skip</button>*/}
-                                    <SkipButton closeModal={closeModal}/>
+                                    {/*<SkipButton closeModal={closeModal}/>*/}
                                 </div>
                             </div>
                         </div>
@@ -70,7 +73,7 @@ const Onboarding = ({setShowOnboardingModal}: {setShowOnboardingModal: Dispatch<
 
                                 <div className={"flex-center lg:flex-row flex-column gap-4"}>
                                     <NextButton/>
-                                    <SkipButton closeModal={closeModal}/>
+                                    {/*<SkipButton closeModal={closeModal}/>*/}
                                 </div>
                             </div>
                         </div>
@@ -89,7 +92,7 @@ const Onboarding = ({setShowOnboardingModal}: {setShowOnboardingModal: Dispatch<
 
                                 <div className={"flex-center lg:flex-row flex-column gap-4"}>
                                     <NextButton />
-                                    <SkipButton closeModal={closeModal} />
+                                    {/*<SkipButton closeModal={closeModal} />*/}
                                 </div>
                             </div>
                         </div>
@@ -111,7 +114,7 @@ const Onboarding = ({setShowOnboardingModal}: {setShowOnboardingModal: Dispatch<
 
                                 <div className={"flex-center lg:flex-row flex-column gap-4"}>
                                     <NextButton />
-                                    <SkipButton closeModal={closeModal} />
+                                    {/*<SkipButton closeModal={closeModal} />*/}
                                 </div>
                             </div>
                         </div>
@@ -127,7 +130,9 @@ const Onboarding = ({setShowOnboardingModal}: {setShowOnboardingModal: Dispatch<
                                     and
                                     encourage good money habits.</p>
 
-                                <button onClick={closeModal} className={"w-4/5  lg:w-[220px] white-btn text-primary"}>Proceed to Dashboard</button>
+                                {/*<Button className={"white-btn text-primary w-4/5"} type={"submit"} isValid={true} isLoading={isPending} name={"Proceed to Dashboard"} />*/}
+                                {!isPending && <button onClick={handleOnboardUser} className={"w-4/5  lg:w-[220px] white-btn text-primary"}>Proceed to Dashboard</button>}
+                                {isPending && <button disabled className={"w-4/5 lg:w-[220px] white-btn text-primary"}>Onboarding...</button>}
                             </div>
                         </div>
                     </SwiperSlide>

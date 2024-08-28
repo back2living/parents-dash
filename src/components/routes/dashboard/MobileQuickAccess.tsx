@@ -1,12 +1,13 @@
 // Import Swiper styles
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {Pagination } from 'swiper/modules';
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Pagination } from "swiper/modules";
 
-import 'swiper/css';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
 import Card from "@/components/shared/Card";
+import {IUserStats} from "@interfaces/UserInterface";
 
-const MobileQuickAccess = () => {
+const MobileQuickAccess = ({stats}: { stats: IUserStats }) => {
     return (
         <div>
              <div className={"lg:hidden mobile-card-wrapper mt-[18px]"}>
@@ -22,7 +23,7 @@ const MobileQuickAccess = () => {
                         <Card
                             textColor={"white"}
                             text={"Kids added"}
-                            count={1}
+                            count={stats?.kids || 0}
                             img={"kids-bg.webp"}
                             link={{name: "Add kids", path: "/kids", textColor: "#F07846"}}
                             className={"dashboard-card"}
@@ -32,7 +33,7 @@ const MobileQuickAccess = () => {
                         <Card
                             textColor={"white"}
                             text={"Tasks waiting for approval"}
-                            count={1}
+                            count={stats?.tasks || 0}
                             img={"tasks-bg.webp"}
                             link={{name: "Add tasks", path: "/tasks", textColor: "#AF70EE"}}
                             className={"dashboard-card"}
@@ -42,7 +43,7 @@ const MobileQuickAccess = () => {
                         <Card
                             textColor={"white"}
                             text={"Items in Storefront"}
-                            count={1}
+                            count={0}
                             img={"store-bg.webp"}
                             link={{name: "Store Items", path: "/store", textColor: "#FDBA2D"}}
                             className={"dashboard-card"}
@@ -51,8 +52,8 @@ const MobileQuickAccess = () => {
                     <SwiperSlide>
                         <Card
                             textColor={"white"}
-                            text={"Savings created"}
-                            count={1}
+                            text={"Do-cards awaiting approval"}
+                            count={stats?.docards || 0}
                             img={"savings-bg.webp"}
                             link={{name: "Set up now", path: "/savings", textColor: "#09C2B2"}}
                             className={"dashboard-card"}

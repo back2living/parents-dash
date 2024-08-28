@@ -1,25 +1,28 @@
 import DashboardLayout from "@/layouts/DashboardLayout";
-import {QuickAccess, Tasks, Savings} from "@/components/routes/dashboard";
+import {QuickAccess, Tasks} from "@/components/routes/dashboard";
 import MobileQuickAccess from "@/components/routes/dashboard/MobileQuickAccess";
 import Onboarding from "@/components/routes/dashboard/Onboarding/Onboarding";
-import FormModal from "@/components/shared/FormModal";
-import {useState} from "react";
+import RecentDoCards from "@/components/routes/dashboard/RecentDoCards";
+import {useFetchStats} from "@/hooks/useUsers";
+import {useCurrentUser} from "@/store/auth/authStore";
 
 const Dashboard = () => {
-    const [showOnboardingModal, setShowOnboardingModal] = useState<boolean>(true);
+    const currentUser = useCurrentUser();
+    const showOnboardingModal = !currentUser?.hasSeenOnboarding;
+    const {data} = useFetchStats();
 
     return (
         <DashboardLayout title={"Dashboard"}>
             <div>
-                <QuickAccess />
-                <MobileQuickAccess />
+                <QuickAccess stats={data?.data} />
+                <MobileQuickAccess stats={data?.data} />
 
-                <div className={"lg:flex-between"}>
+                <div className={"lg:flex lg:gap-10 xl:gap-20"}>
                     <Tasks />
-                    <Savings />
+                    <RecentDoCards />
                 </div>
 
-                {showOnboardingModal && <Onboarding setShowOnboardingModal={setShowOnboardingModal}/>}
+                {showOnboardingModal && <Onboarding/>}
             </div>
         </DashboardLayout>
     );

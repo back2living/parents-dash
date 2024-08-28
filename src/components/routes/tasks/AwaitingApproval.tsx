@@ -1,47 +1,45 @@
 import {ChevronDown} from "lucide-react";
 import {useState} from "react";
+import {useApproveOrRejectKidChecklistTask} from "@/hooks/useTasks";
+import {IChecklistTask} from "@interfaces/TaskInterface";
 
-const AwaitingApproval = () => {
-    const [showDropdown, setShowDropdown] = useState<boolean>(false);
+const AwaitingApproval = ({tasks}: {tasks: IChecklistTask[]}) => {
+    const [showDropdown, setShowDropdown] = useState<boolean>(true);
+    const openDropdown = () => setShowDropdown(prevState => !prevState);
+    const [selectedIndex, setSelectedIndex] = useState<null | number>(null);
 
-    const openDropdown = () => setShowDropdown(prevState => !prevState)
+    const {isPending, mutate} = useApproveOrRejectKidChecklistTask();
+
+    const handleApproveOrRejectTask = (task: IChecklistTask, index: number, approved: boolean) => {
+        setSelectedIndex(index);
+        mutate({
+            id: task?._id,
+            approved
+        });
+    }
 
     return (
         <div className={"mt-6"}>
             <div onClick={openDropdown} className={"flex-center-between cursor-pointer"}>
-                <p className={"flex-center gap-1 text-secondary-dark font-semibold text-sm"}>⏳ Awaiting
-                    approval <span className={"font-medium text-secondary"}>3</span></p>
+                <p className={"flex-center gap-1 text-secondary-dark font-semibold text-sm"}>⏳ Awaiting approval <span className={"font-medium text-secondary"}>{tasks?.length}</span></p>
                 <ChevronDown size={16} className={"text-[#B1B1B1]"}/>
             </div>
-            {showDropdown && <div className={"mt-2 flex-column gap-2"}>
-                <div className={"flex-center-between p-3 bg-white border border-[#E8E8E8] rounded-xl"}>
-                    <p className={"font-medium text-[#363636] flex-1"}>🥱 Get out of bed early</p>
+            {showDropdown && <div className={"mt-2 flex-column gap-2 h-[500px] overflow-auto"}>
+                {tasks?.map((task, index: number) => <div key={task?._id}
+                    className={"flex-center-between p-3 bg-white border border-[#E8E8E8] rounded-xl"}>
+                    <div className={"flex-center gap-2"}>
+                        <span>{task?.checklistInfo?.icon}</span>
+                        <p className={"font-medium text-[#363636] flex-1 capitalize"}>{task?.checklistInfo?.title}</p>
+                    </div>
 
                     <div className={"flex-center gap-4"}>
-                        <button className={"text-sm text-orange font-medium"}>Approve</button>
-                        <button className={"text-sm text-secondary font-medium"}>Decline</button>
-                        <img className={"w-6 rounded-xl"} src="/assets/images/girl-smile.svg" alt=""/>
-                    </div>
-                </div>
-                <div className={"flex-center-between p-3 bg-white border border-[#E8E8E8] rounded-xl"}>
-                    <p className={"font-medium text-[#363636] flex-1"}>💆🏻‍♂️ Wash your face</p>
+                        {!isPending && <button onClick={() => handleApproveOrRejectTask(task, index, true)} className={"text-sm text-orange font-medium"}>Approve</button>}
+                        {isPending && <button disabled={true} className={`text-sm text-orange font-medium disabled:cursor-not-allowed ${selectedIndex === index && "animate-pulse"}`}>Approve</button>}
 
-                    <div className={"flex-center gap-4"}>
-                        <button className={"text-sm text-orange font-medium"}>Approve</button>
-                        <button className={"text-sm text-secondary font-medium"}>Decline</button>
-                        <img className={"w-6 rounded-xl"} src="/assets/images/girl-smile.svg" alt=""/>
+                        {!isPending && <button onClick={() => handleApproveOrRejectTask(task, index, false)} className={"text-sm text-secondary font-medium"}>Decline</button>}
+                        {isPending && <button disabled={true} className={`text-sm text-secondary font-medium disabled:cursor-not-allowed ${selectedIndex === index && "animate-pulse"}`}>Decline</button>}
                     </div>
-                </div>
-                <div className={"flex-center-between p-3 bg-white border border-[#E8E8E8] rounded-xl"}>
-                    <p className={"font-medium text-[#363636] flex-1"}>🪥 Brush your teeth</p>
-
-
-                    <div className={"flex-center gap-4"}>
-                        <button className={"text-sm text-orange font-medium"}>Approve</button>
-                        <button className={"text-sm text-secondary font-medium"}>Decline</button>
-                        <img className={"w-6 rounded-xl"} src="/assets/images/girl-smile.svg" alt=""/>
-                    </div>
-                </div>
+                </div>)}
             </div>}
         </div>
     );

@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from 'react';
+import { RefObject, useEffect } from "react";
 
 type Event = MouseEvent | TouchEvent | KeyboardEvent;
 
@@ -14,7 +14,7 @@ function useOnClickOutsideAndEscapePress<T extends HTMLElement = HTMLElement>(
          }
 
          // Handle escape key press
-         if (event instanceof KeyboardEvent && event.key === 'Escape') {
+         if (event instanceof KeyboardEvent && event.key === "Escape") {
             handler(event);
             return;
          }
@@ -22,14 +22,14 @@ function useOnClickOutsideAndEscapePress<T extends HTMLElement = HTMLElement>(
          handler(event);
       };
 
-      document.addEventListener('mousedown', listener);
-      document.addEventListener('touchstart', listener);
-      document.addEventListener('keydown', listener);
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      document.addEventListener("keydown", listener);
 
       return () => {
-         document.removeEventListener('mousedown', listener);
-         document.removeEventListener('touchstart', listener);
-         document.removeEventListener('keydown', listener);
+         document.removeEventListener("mousedown", listener);
+         document.removeEventListener("touchstart", listener);
+         document.removeEventListener("keydown", listener);
       };
    }, [ref, handler]);
 }

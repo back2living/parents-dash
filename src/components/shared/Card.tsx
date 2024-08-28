@@ -16,7 +16,7 @@ const Card = ({count, text, img, link, textColor, className}: ICardProps) => {
 
             <div style={{color: textColor}} className={"relative text-white font-bold"}>
                 <p className={"text-[32px]"}>{count}</p>
-                <p>{text}</p>
+                <p className={"text-sm"}>{text}</p>
 
                 {link?.name && <Link style={{color: link.textColor}} href={link.path} className={`mt-4 card-btn card-btn-shadow `}>{link.name}</Link>}
             </div>
