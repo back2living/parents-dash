@@ -34,7 +34,7 @@ const DesktopNavbar = ({title="Title", setShowNotifications, goBack}: NavbarProp
                             width={32}
                             height={32}
                             src={`${currentUser?.avatar  || "/assets/images/avatar.svg"}?key=${key}`}
-                            alt={currentUser?.firstName}
+                            alt={currentUser?.firstName || ""}
                         />
                         {/*<img key={key} className={"w-8 h-8 rounded-full"} src={currentUser?.avatar || "/assets/images/avatar.svg"} alt="avatar"/>*/}
                     </button>

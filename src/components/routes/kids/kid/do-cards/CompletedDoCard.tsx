@@ -1,4 +1,6 @@
-const CompletedDoCard = ({doCard}: {doCard: any}) => {
+import {IDoCard} from "@interfaces/DoCardInterfaces";
+
+const CompletedDoCard = ({doCard}: {doCard: IDoCard}) => {
     return (
         <div className={"bg-primary p-3 rounded-2xl"}>
             <div className={"w-full h-[150px] rounded-xl"}>

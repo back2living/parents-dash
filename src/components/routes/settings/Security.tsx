@@ -29,7 +29,7 @@ const Security = () => {
 
     const handleChangePassword = (data: ChangePasswordFormValues) => {
         delete data.confirmPassword;
-        console.log(data);
+        // console.log(data);
         mutate({
             oldPassword: data.oldPassword,
             password: data.password
@@ -44,7 +44,7 @@ const Security = () => {
             <form onSubmit={handleSubmit(handleChangePassword)} className={"mt-10"}>
                 <PasswordInput
                     label={"Current Password"}
-                    // errors={errors}
+                    errors={errors}
                     name={"oldPassword"}
                     register={register}
                 />

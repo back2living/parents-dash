@@ -6,6 +6,7 @@ import {useAddDoCard} from "@/hooks/useDocards";
 import {useFetchAllStorefronts} from "@/hooks/useStorefront";
 import {useCurrentKid, useSetKidActiveTab} from "@/store/kid/kidStore";
 import {useKidProfileRoute} from "@/hooks/useKidProfile";
+import {StorefrontItem} from "@interfaces/StorefrontInterface";
 
 const KidIssueDoCardGoals = () => {
     const [showAddGoalForm, setShowAddGoalForm] = useState<boolean>(false);
@@ -15,7 +16,7 @@ const KidIssueDoCardGoals = () => {
     const {data, isPending} = useFetchAllStorefronts();
     const {mutate, isPending: isAddDoCardPending} = useAddDoCard(handleRouteToKidProfile);
 
-    const handleSubmitDoCard = (item: any) => {
+    const handleSubmitDoCard = (item: StorefrontItem) => {
         if (currentKid) {
             mutate({
                 isMandatory: false,
@@ -61,7 +62,7 @@ const KidIssueDoCardGoals = () => {
                         <p className={"text-[#515151] text-lg font-semibold"}>Set towards a storefront item</p>
                     </div>
                     <div className={"flex-column gap-2 max-h-[450px] overflow-auto mt-6"}>
-                        {data?.data?.map((item: any) => item?.storefronts?.map((item: any) => <div
+                        {data?.data?.map((item) => item?.storefronts?.map((item) => <div
                             onClick={() => handleSubmitDoCard(item)}
                             className={"flex-center-between border-b border-b-[#f5f5f5] p-3 cursor-pointer"}
                             key={item?._id}

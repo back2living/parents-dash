@@ -15,14 +15,18 @@ import {
     // updateStorefrontDoCard
 } from "@/api/storefront.api";
 import toast from "react-hot-toast";
-import {IPurchasedStorefrontItem, StorefrontCategoryOnly} from "@/interfaces/StorefrontInterface";
+import {
+    IPurchasedStorefrontItem,
+    StorefrontCategoryOnly,
+    StorefrontItemWithCategory
+} from "@/interfaces/StorefrontInterface";
 import {CustomError} from "@interfaces/ErrorInterface";
 
 export const useFetchAllStorefronts = () => {
     return useQuery({
         queryKey: ["storefronts"],
         queryFn: () => fetchStorefrontsWithCategories()
-    });
+    }) as {data: {data: StorefrontItemWithCategory[]}, isPending: boolean};
 }
 export const useFetchAllStorefrontsCategories = () => {
     return useQuery({

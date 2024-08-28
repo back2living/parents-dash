@@ -8,6 +8,7 @@ import Button from "@/components/shared/Button";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {forgotPasswordSchema} from "@/lib/helpers";
+import {CustomError} from "@interfaces/ErrorInterface";
 
 export type FormValues = {
     email: string;
@@ -18,6 +19,7 @@ const ForgotPassword = () => {
     const {formState, register, handleSubmit} = form;
     const {errors, isValid} = formState;
 
+
     const {mutate, isPending} = useMutation({
         mutationFn: ({email}: FormValues) => forgotPassword({email}),
         onSuccess: async (data, variables) => {
@@ -25,7 +27,7 @@ const ForgotPassword = () => {
             localStorage.setItem("forgotPasswordEmail", variables?.email);
             await router.push("/forgot-password-success");
         },
-        onError: (error: any) => {
+        onError: (error: CustomError) => {
             toast.error(error?.response?.data?.message)
         }
     });

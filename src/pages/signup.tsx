@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import Button from "@/components/shared/Button";
 import axios from "axios";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface CustomError extends Error {
     response: {
         data: {

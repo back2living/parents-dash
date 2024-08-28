@@ -7,6 +7,12 @@ export interface StorefrontItem {
     updatedAt: string
 }
 
+export interface StorefrontItemWithCategory {
+    title?: string,
+    storefronts?: StorefrontItem[]
+
+}
+
 export interface StorefrontCategory {
     _id: string;
     title: string;

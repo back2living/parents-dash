@@ -20,7 +20,7 @@ const Account = () => {
 
     const fallbackImg = file ? URL.createObjectURL(file) : null
     const currentUser = useCurrentUser();
-    const dateUpdated = new Date(currentUser?.updatedAt).getTime();
+    const dateUpdated = new Date(currentUser?.updatedAt || "").getTime();
 
     const closeModal = () => {
         setShowModal(false);
@@ -101,7 +101,7 @@ const Account = () => {
             <FormModal isOpen={showDeleteAccountModal} style={"lg:w-[450px] rounded-t-3xl max-h-full overflow-y-auto lg:mb-0"}>
                 <DeleteAccount closeModal={() => setShowDeleteAccountModal(false)} />
             </FormModal>
-            <FormModal isOpen={file && showModal} style={"lg:w-[550px] max-h-full rounded-2xl w-[95%] mx-auto overflow-y-auto mb-8 lg:mb-0"}>
+            <FormModal isOpen={!!(file && showModal)} style={"lg:w-[550px] max-h-full rounded-2xl w-[95%] mx-auto overflow-y-auto mb-8 lg:mb-0"}>
                 <ImageUpload isPending={isPending} handleUploadProfilePicture={handleUploadProfilePicture} isGuardianProfileImg isImageConversion={isImageConversionLoading} text={"Upload Image"} closeModal={() => {
                     setFile(null);
                     setShowModal(false)

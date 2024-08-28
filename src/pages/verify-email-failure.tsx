@@ -2,9 +2,14 @@ import AuthLayout from "@/layouts/AuthLayout";
 import Link from "next/link";
 import Button from "@/components/shared/Button";
 import {useResendVerificationEmail} from "@/hooks/useResendVerificationEmail";
+import {useEffect, useState} from "react";
 
 const VerifyEmailFailure = () => {
-    const userEmail =  localStorage.getItem("userRegistrationEmail");
+    const [userEmail, setUserEmail] = useState<string | null>(null);
+
+    useEffect(() => {
+        setUserEmail(localStorage.getItem("userRegistrationEmail"));
+    }, []);
 
     const {mutate, isPending} = useResendVerificationEmail();
     const handleResendEmail = () => mutate({email: userEmail!});

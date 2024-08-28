@@ -5,6 +5,7 @@ import instance, {baseUrl} from "@/api/instance";
 import toast from "react-hot-toast";
 import {useRouter} from "next/router";
 import Button from "@/components/shared/Button";
+import axios from "axios";
 
 interface IProps {
     token: string;
@@ -12,6 +13,21 @@ interface IProps {
 const styles = {
     active: "opacity-100 cursor-pointer pointer-events-auto text-orange ml-1",
     inactive: "opacity-50 pointer-events-none text-orange ml-1",
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface CustomError extends Error {
+    response: {
+        data: {
+            message: string;
+        };
+    };
+}
+
+
+interface ValidationError {
+    message: string;
+    errors: Record<string, string[]>
 }
 
 const VerifyEmail = ({token}: IProps) => {
@@ -33,8 +49,13 @@ const VerifyEmail = ({token}: IProps) => {
             const {data} = await instance.put(`${baseUrl}/auth/verification`, {token, code: otpCode});
             toast.success(data?.message);
             await router.push("/signin");
-        } catch (err: any) {
-            toast.error(err?.response?.data?.message)
+        } catch (err: CustomError | unknown) {
+            if (axios.isAxiosError<ValidationError, Record<string, unknown>>(err)) {
+                toast.error(err?.response?.data?.message || "")
+            } else {
+                toast.error("An error occurred");
+                console.error(err);
+            }
         } finally {
             setIsLoading(false);
         }
@@ -44,8 +65,13 @@ const VerifyEmail = ({token}: IProps) => {
         try {
             const {data} = await instance.post(`${baseUrl}/auth/verification`, {email: userEmail});
             toast.success(data?.message);
-        } catch (err: any) {
-            toast.error(err?.data?.response?.message)
+        } catch (err: CustomError | unknown) {
+            if (axios.isAxiosError<ValidationError, Record<string, unknown>>(err)) {
+                toast.error(err?.response?.data?.message || "")
+            } else {
+                toast.error("An error occurred");
+                console.error(err);
+            }
         } finally {
             setIsLoading(false);
         }

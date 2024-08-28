@@ -20,7 +20,7 @@ const BillingTable = () => {
                 </div>
 
                 <div className={"flex-column gap-2 mt-4"}>
-                    {Array.from({length: 4}).map((item, index) => <div key={index}
+                    {Array.from({length: 4}).map((_, index) => <div key={index}
                                                                        className={"table-item font-medium flex-center p-4 bg-primary rounded-2xl text-secondary-dark"}>
                         <p className={"w-[122px] px-2 max-w-[150px]"}>8/10/23</p>
                         <p className={"w-[180px] px-2 max-w-[200px]"}>Playground Premium</p>

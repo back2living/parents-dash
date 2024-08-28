@@ -14,6 +14,8 @@ interface IAddDoCard {
 
 export interface IPexelImage {
     photographer: string;
+    id?: string;
+    alt?: string;
     src: {
         original: string;
         small: string;
@@ -23,6 +25,7 @@ export interface IPexelImage {
         medium: string;
     }
 }
+
 
 const DoCardGoalForm = ({setShowAddGoalForm}: IAddDoCard) => {
     const currentKid = useCurrentKid();
@@ -48,7 +51,7 @@ const DoCardGoalForm = ({setShowAddGoalForm}: IAddDoCard) => {
         queryKey: ["getPixelPhotos", debouncedQuery],
         queryFn: getPhotos,
         enabled: !!debouncedQuery
-    });
+    }) as {data: IPexelImage[], isPending: boolean};
     const isValid = !!(purpose && points && selectedImage);
 
     const handleRouteToKidProfile = useKidProfileRoute(currentKid?._id || "", setKidActiveTab);
@@ -96,13 +99,13 @@ const DoCardGoalForm = ({setShowAddGoalForm}: IAddDoCard) => {
                         </div>}
 
                         {!isPending && <div className={"rounded-3xl bg-primary p-1 flex-center overflow-x-auto gap-2"}>
-                            {data?.map(((item: any, index: number, array: []) => {
+                            {data?.map(((item: IPexelImage, index: number, array) => {
                                 const lastItemIndex = array?.length - 1;
                                 const lastItem = lastItemIndex === index;
                                 return <div onClick={() => {
                                     setSelectedImage(item);
                                     setSelectedCategoryIndex(index);
-                                }} key={item.img} className="relative min-w-[150px] max-w-[200px] h-[120px]">
+                                }} key={item.id} className="relative min-w-[150px] max-w-[200px] h-[120px]">
                                     {selectedCategoryIndex === index &&
                                         <span className={"absolute top-2 right-2"}>{SelectedCategoryIcon}</span>}
                                     <img
