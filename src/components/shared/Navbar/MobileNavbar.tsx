@@ -32,6 +32,7 @@ export const mobileVariants = {
 const MobileNavbar = ({title, setShowNotifications, goBack}: NavbarProp) => {
     const [showUserProfile, setShowUserProfile] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [key, setKey] = useState(0);
 
     // Define the active paths for the Kids link
     const activePaths = ["/kids"];
@@ -52,7 +53,14 @@ const MobileNavbar = ({title, setShowNotifications, goBack}: NavbarProp) => {
     const handleGoToPreviousPage = () => router.back();
 
     const showArrowIcon = (title === "User Level" || title === "Rate Alert" || title === "Get Mobile Apps" || title === "Referrals");
+
     const currentUser = useCurrentUser();
+
+    useEffect(() => {
+        // This effect will run whenever currentUser?.updatedAt changes
+        setKey(prevState => prevState + 1);
+    }, [currentUser?.updatedAt]);
+
 
     return (
         <div className={"h-16 flex items-center lg:hidden relative"}>
@@ -67,7 +75,13 @@ const MobileNavbar = ({title, setShowNotifications, goBack}: NavbarProp) => {
                     <div className={"flex items-center gap-2"}>
                         <button onClick={() => setShowNotifications(true)}>{BellIcon}</button>
                         <button onClick={() => setShowUserProfile(!showUserProfile)}>
-                            <img className={"h-7 w-7 md:w-8 md:h-8 rounded-full"} src={currentUser?.avatar || "/assets/images/avatar.svg"} alt="avatar"/>
+                            <Image
+                                className={"w-7 h-7 rounded-full"}
+                                width={28}
+                                height={28}
+                                src={currentUser?.avatar ? `${currentUser?.avatar}?key=${key}&cache=${key}` : "/assets/images/avatar.svg"}
+                                alt={currentUser?.firstName || "avatar"}
+                            />
                         </button>
                     </div>
                 </div>
