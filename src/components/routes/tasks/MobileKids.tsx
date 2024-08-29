@@ -26,15 +26,18 @@ const MobileKids = ({activeKidTab, setActiveKidTab, data}:  IMobileKids) => {
 
     return (
         <div>
-            <div className={"flex-center-between mt-8"}>
+            {data.length === 0 && <p className={"mt-8 font-medium text-secondary text-center"}>Please add a kid.</p>}
+            {data?.length > 0 && <div className={"flex-center-between mt-8"}>
                 <div className={"flex-center gap-1"}>
                     <button onClick={() => setIsOpen(true)}>{ChecklistMenuIcon}</button>
-                    <p className={"flex-center gap-1 text-[#515151] font-semibold"}>{activeKidTab?.firstName} {activeKidTab?.lastName} <span
-                        className={"text-sm font-medium text-secondary"}>{activeKidTab?.tasks?.length}</span></p>
+                    <p className={"flex-center gap-1 text-[#515151] font-semibold"}>{activeKidTab?.firstName} {activeKidTab?.lastName}
+                        <span
+                            className={"text-sm font-medium text-secondary"}>{activeKidTab?.tasks?.length}</span></p>
                 </div>
                 <button className={"text-sm font-semibold text-[#B1B1B1] flex-center gap-1"}>New Checklist <Plus
                     size={20} className={"text-[#B1B1B1]"}/></button>
-            </div>
+            </div>}
+
             <div className={"mt-8 flex-column gap-2"}>
                 {activeKidTab?.tasks?.map((task, index: number) => <div key={index} className={"flex-center-between p-3 bg-white border border-[#E8E8E8] rounded-xl"}>
                     <div className={"flex-center gap-1 text-sm"}>
@@ -56,17 +59,20 @@ const MobileKids = ({activeKidTab, setActiveKidTab, data}:  IMobileKids) => {
                     <motion.div className={"bg-white mx-auto rounded-2xl h-full max-w-[500px] p-4"}
                                 variants={mobileVariants} initial={"initial"} animate={"final"} exit={{opacity: 0}}>
                         <div className={"relative"}>
-                        <button onClick={() => setIsOpen(false)} className={"absolute top-2 right-2"}>{CircleCloseIcon}</button>
-                           <p className={"p-4"}>Kids</p>
-                            <div className={"flex-column gap-2 font-medium"}>
-                                {data?.map((kid) => <div onClick={() => handleKidClick(kid)} className={activeKidTab?._id === kid?._id ? categoryStyle.active : categoryStyle.inactive}>
+                            <button onClick={() => setIsOpen(false)} className={"absolute top-2 right-2"}>{CircleCloseIcon}</button>
+                            <p className={"p-4"}>Kids</p>
+                            {data.length === 0 && <p className={"font-medium text-secondary text-center"}>Please add a kid.</p>}
+
+                            {data.length > 0 && <div className={"flex-column gap-2 font-medium"}>
+                                {data?.map((kid) => <div onClick={() => handleKidClick(kid)}
+                                                         className={activeKidTab?._id === kid?._id ? categoryStyle.active : categoryStyle.inactive}>
                                     <div className={"flex-center gap-2"}>
                                         <img className={"w-6 h-6 rounded-lg object-cover"} src={kid?.avatar} alt=""/>
                                         <div className={"text-[#363636]"}>{kid?.firstName} {kid?.lastName}</div>
                                     </div>
                                     <p className={"text-sm text-secondary"}>{kid?.tasks?.length}</p>
                                 </div>)}
-                            </div>
+                            </div>}
                         </div>
                     </motion.div>
                 </motion.div>}
