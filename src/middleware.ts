@@ -17,7 +17,6 @@ const middleware = (req: NextRequest, res: NextResponse) => {
 }
 
 export default middleware;
-
 export const config = {
     matcher: ["/signin", "/signup", "/forgot-password", "/forgot-password-success", "/checklists", "/storefront", "/tasks", "/kids", "/kids/:id", "/settings", "/kids/:id/do-cards-goals", "/kids/:id/do-cards-penalties", "/kids/:id/issue-do-cards", "/kids/:id/purchased-items", "/kids/:id/tasks", "/dashboard"],
 }
