@@ -56,10 +56,14 @@ export const useFetchKid = (id: string) => {
 }
 export const useAddKid = (closeModal: () => void) => {
     const queryClient = useQueryClient();
+    const setCurrentKid = useSetCurrentKid();
+    const router = useRouter();
 
     return useMutation({
         mutationFn: ({avatar, dob, points, username, firstName, lastName, password, gender}: IAddKid) => addKid({avatar, dob, points, username, firstName, lastName, password, gender}),
-        onSuccess: async (variables) => {
+        onSuccess: async (data, variables) => {
+            setCurrentKid(data?.data);
+            await router.push(`/kids/${data?.data?._id}`)
             await queryClient.invalidateQueries({ queryKey: ["kids"] });
             toast.success(`Kid ${variables?.username} has been created.`);
             closeModal();
