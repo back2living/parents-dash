@@ -3,22 +3,25 @@ import FormModal from "@/components/shared/FormModal";
 import ImageUpload from "@/components/routes/kids/kid/ImageUpload";
 import {useState} from "react";
 import {Allowance, Profile, RecentDoCards, RecentTasks, StoreItem, Activity} from "@/components/routes/kids/kid/index";
-import {IKid, useUpdateKidProfileImage} from "@/hooks/useKids";
+import {useUpdateKidProfileImage} from "@/hooks/useKids";
 import useImageUpload from "@/hooks/useImageUpload";
 import useUploadFiles from "@/hooks/useUploadFiles";
-import Image from "next/image";
+import {useCurrentKid} from "@store/kid/kidStore";
 
-const KidProfile = ({kidData}: {kidData: IKid}) => {
-    const [cacheBuster, setCacheBuster] = useState(Date.now());
+const KidProfile = () => {
+    const currentKid = useCurrentKid();
     const [localLoading, setLocalLoading] = useState(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [avatarKey, setAvatarKey] = useState(0);
 
     const {selectedImage, handleImageUpload, file, setFile, handleGetImageSignedUrls, URLS} = useImageUpload();
     useUploadFiles(URLS, selectedImage);
+    const fallbackImg = file ? URL.createObjectURL(file) : null
 
     const handleStopLocalLoading = () => setLocalLoading(false);
     const closeModal = () => {
-        setCacheBuster(Date.now());
-        setFile(null)
+        setShowModal(false);
+        setAvatarKey((prevKey) => prevKey + 1);
     }
 
     const {isPending, mutate} = useUpdateKidProfileImage(closeModal, handleStopLocalLoading);
@@ -29,7 +32,7 @@ const KidProfile = ({kidData}: {kidData: IKid}) => {
             if (imageUrls) {
                 mutate({
                     avatar: imageUrls[0],
-                    id: kidData?._id
+                    id: currentKid?._id || ""
                 });
             }
         }
@@ -39,24 +42,26 @@ const KidProfile = ({kidData}: {kidData: IKid}) => {
         <div className={"grid grid-cols-1 lg:grid-cols-2 lg:gap-20"}>
             <div className={"max-w-[600px]"}>
                 <div className={"rounded-3xl w-20 h-20 relative"}>
-                    <Image
-                        width={80}
-                        height={80}
+                    <img
+                        key={avatarKey}
                         className={"rounded-full w-20 h-20 object-cover"}
-                        src={`${kidData?.avatar}?cache=${cacheBuster}`}
+                        src={`${fallbackImg || currentKid?.avatar}`}
                         alt=""
                     />
 
                     <label className={"cursor-pointer transition-all duration-300 hover:rotate-[360deg] absolute top-0 right-0"}
                         htmlFor="images">
                         <span>{EditKidIcon}</span>
-                        <input accept=".jpeg, .jpg, .png" multiple onChange={(e) => handleImageUpload(e)} id={"images"} type="file" hidden/>
+                        <input accept=".jpeg, .jpg, .png" multiple onChange={(e) => {
+                            handleImageUpload(e);
+                            setShowModal(true)
+                        }} id={"images"} type="file" hidden/>
                     </label>
                 </div>
 
                 <div>
-                    <Profile kidData={kidData}/>
-                    <Allowance kidData={kidData}/>
+                    <Profile/>
+                    <Allowance/>
                     <Activity/>
                 </div>
             </div>
@@ -65,13 +70,16 @@ const KidProfile = ({kidData}: {kidData: IKid}) => {
                 <RecentDoCards/>
                 <StoreItem/>
             </div>
-            <FormModal isOpen={!!file} style={"lg:w-[550px] max-h-full rounded-2xl w-[95%] mx-auto overflow-y-auto mb-8 lg:mb-0"}>
+            <FormModal isOpen={!!(file && showModal)} style={"lg:w-[550px] max-h-full rounded-2xl w-[95%] mx-auto overflow-y-auto mb-8 lg:mb-0"}>
                 <ImageUpload
                     isPending={localLoading || isPending}
                     handleUploadProfilePicture={handleUploadProfilePicture}
                     isGuardianProfileImg
                     text={"Upload Image"}
-                    closeModal={() => setFile(null)}
+                    closeModal={() => {
+                        setFile(null);
+                        setShowModal(false)
+                    }}
                     file={file}
                 />
             </FormModal>

@@ -368,7 +368,7 @@
         @apply p-1.5 text-primary flex-center gap-1;
     }
 
-    /*------------------- ADD KID ---------------------------------------*/
+    /*------------------------ ADD KID ---------------------------------------*/
     .default-radio-btn {
         @apply bg-primary flex-center justify-center h-12 px-4 rounded-xl min-w-[110px] border-2 border-[#ECECEC] transition-all;
     }
@@ -376,14 +376,12 @@
         @apply bg-[#FCE4DA] border-[#F07846];
     }
 
-
     /*------------------------ STORE-FRONT ---------------------------------------*/
     .item-dropdown-wrapper {
         @apply shadow-country text-xs p-0.5 transition-all duration-300 bg-white rounded-lg z-20 absolute top-11 right-2 lg:-right-12 w-[160px] max-w-[200px]
     }
 
     /*------------------------ SETTINGS ---------------------------------------*/
-
     .active-btn {
         @apply w-fit lg:w-[160px] primary-btn;
     }

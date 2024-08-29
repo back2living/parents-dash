@@ -23,6 +23,7 @@ const KidCard = ({kid}: {kid: IKid}) => {
     const isModalOpen = showModal.points || showModal.removeKid;
 
     const handleOpenModal = (modalType: string) => {
+        setCurrentKid(kid);
         setShowModal((prevState) => ({...prevState, [modalType]: true}));
         setShowDropdown(false);
     }
@@ -37,7 +38,7 @@ const KidCard = ({kid}: {kid: IKid}) => {
 
     const handleGoToKidProfile = async () => {
         setCurrentKid(kid);
-        await router.push(`/kids/${kid._id}`);
+        await router.push(`/kids/${kid?._id}`);
     };
 
     const setCurrentKid = useSetCurrentKid();
@@ -47,11 +48,11 @@ const KidCard = ({kid}: {kid: IKid}) => {
         <>
             <div onClick={handleGoToKidProfile} className={"kid-card group"}>
                 <div className={"group-hover:opacity-70 w-full transition-all duration-300 h-40 rounded-xl overflow-hidden block"}>
-                    <Image width={400} height={200} src={kid.avatar} className={"w-full h-full block object-cover"} alt=""/>
+                    <Image width={400} height={200} src={kid?.avatar as string} className={"w-full h-full block object-cover"} alt=""/>
                 </div>
 
                 <div className={"py-2 px-2 lg:px-3"}>
-                    <p className={"text-[#515151] font-semibold"}>{kid.firstName} {kid.lastName}</p>
+                    <p className={"text-[#515151] font-semibold"}>{kid?.firstName} {kid?.lastName}</p>
                     <div className={"mt-3 flex-center-between text-[10px] lg:text-xs"}>
                         <p className={"text-primary"}>Bal: <span
                             className={"text-[#868686]"}>{kid?.points?.toLocaleString("en-US")} pts</span>

@@ -2,11 +2,13 @@ import {BigDollarIcon, WalletIcon} from "@/components/shared/Svg";
 import FormModal from "@/components/shared/FormModal";
 import {useState} from "react";
 import AddMoney from "@/components/routes/kids/modal/AddMoney";
-import {IKid} from "@/hooks/useKids";
+import {useCurrentKid} from "@store/kid/kidStore";
 
 const balanceStyle = "border-2 border-[#ECECEC] bg-white rounded-xl p-4 flex gap-4 flex-1"
-const Allowance = ({kidData}: {kidData: IKid}) => {
+const Allowance = () => {
+    const currentKid = useCurrentKid();
     const [showPointModal, setShowPointModal] = useState<boolean>(false);
+
     return (
         <div>
             <div className={"my-10"}/>
@@ -21,7 +23,7 @@ const Allowance = ({kidData}: {kidData: IKid}) => {
                         <span>{WalletIcon}</span>
                         <div>
                             <p className={"text-sm text-secondary"}>Balance</p>
-                            <p className={"text-primary font-semibold"}>{kidData.points.toLocaleString("en-US")} pts</p>
+                            <p className={"text-primary font-semibold"}>{currentKid?.points.toLocaleString("en-US")} pts</p>
                         </div>
                     </div>
                     <div className={balanceStyle}>

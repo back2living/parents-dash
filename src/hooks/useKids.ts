@@ -3,10 +3,11 @@ import {addKid, addKidPoints, fetchKid, fetchKids, removeKid, updateKidProfileIm
 import toast from "react-hot-toast";
 import {useRouter} from "next/router";
 import {CustomError} from "@interfaces/ErrorInterface";
+import {useCurrentKid, useSetCurrentKid} from "@store/kid/kidStore";
 
-export interface IKid {
+export type IKid = {
     avatar: string;
-    createdAt: Date;
+    createdAt: string;
     device: string;
     email: string;
     fcmTokens: [];
@@ -16,11 +17,11 @@ export interface IKid {
     hasSeenOnboarding: boolean;
     isSubscribed: boolean;
     isVerified: boolean;
-    passwordChangeAt: Date;
+    passwordChangeAt: string;
     points: number;
     role: string;
     suspended: boolean;
-    updatedAt: Date;
+    updatedAt: number;
     username: string;
     _id: string;
     gender: string;
@@ -29,7 +30,7 @@ export interface IKid {
         month: number;
         year: number;
     }
-}
+} | null;
 export interface IAddKid {
     avatar: string;
     firstName: string;
@@ -67,14 +68,17 @@ export const useAddKid = (closeModal: () => void) => {
     })
 }
 export const useAddKidPoints = (closeModal: () => void) => {
+    const currentKid = useCurrentKid();
+    const setCurrentKid = useSetCurrentKid();
+
     const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: ({id, points}: { id: string; points: number }) => addKidPoints({id, points}),
         onSuccess: async (data, variables) => {
             await queryClient.invalidateQueries({ queryKey: ["kids"] });
-            await queryClient.invalidateQueries({ queryKey: ["kid", variables?.id] });
             toast.success(data?.message);
+            setCurrentKid({...currentKid, points: (currentKid?.points || 0) + variables?.points} as IKid)
             closeModal();
         },
         onError: (error: CustomError) => {
@@ -98,10 +102,16 @@ export const useRemoveKid = (closeModal: () => void) => {
     })
 }
 export const useUpdateKidProfileImage = (closeModal: () => void, handleStopLocalLoading: () => void) => {
+    const queryClient = useQueryClient();
+    const currentKid = useCurrentKid();
+    const setCurrentKid = useSetCurrentKid();
+
     return useMutation({
         mutationFn: ({avatar, id}: {avatar: string; id: string}) => updateKidProfileImage({avatar, id}),
-        onSuccess: (data) => {
+        onSuccess: async (data) => {
+            await queryClient.invalidateQueries({ queryKey: ["kids"] });
             toast.success(data?.message)
+            setCurrentKid({...currentKid, avatar: data?.data?.avatar, updatedAt: Date.now()} as IKid)
             closeModal();
             handleStopLocalLoading();
         },

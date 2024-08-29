@@ -55,7 +55,7 @@ const KidPage = () => {
                 <button onClick={() => handleTabClick("do-cards")} className={cn(activeTab === "do-cards" ? "active-btn" : "inactive-btn")}>Do-Cards</button>
             </div>
 
-            {activeTab === "profile" && <KidProfile kidData={data?.data}/>}
+            {activeTab === "profile" && <KidProfile />}
             {activeTab === "checklists" && <KidChecklist kidData={data?.data} />}
             {activeTab === "do-cards" && <KidDoCards kidData={data?.data} />}
 

@@ -3,26 +3,27 @@ import FormModal from "@/components/shared/FormModal";
 import ChangePassword from "@/components/routes/kids/modal/ChangePassword";
 import RemoveKid from "@/components/routes/kids/modal/RemoveKid";
 import AddMoney from "@/components/routes/kids/modal/AddMoney";
-import {IKid} from "@/hooks/useKids";
+import {useCurrentKid} from "@store/kid/kidStore";
 
-const Profile = ({kidData}: {kidData: IKid}) => {
+const Profile = () => {
+    const currentKid = useCurrentKid();
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [showPointsModal, setShowPointsModal] = useState(false);
     const [showRemoveKidModal, setShowRemoveKidModal] = useState(false);
 
-    const age = new Date().getFullYear() - kidData?.dob?.year;
+    const age = new Date().getFullYear() - (currentKid?.dob?.year || 0);
     return (
         <div>
             <div className={"mt-4 lg:mt-6"}>
-                <p className={"text-primary font-medium text-[18px] mb-2"}>{kidData.firstName} {kidData.lastName}</p>
+                <p className={"text-primary font-medium text-[18px] mb-2"}>{currentKid?.firstName} {currentKid?.lastName}</p>
                 <div className={"flex-center gap-4 lg:gap-6"}>
                     <div className={"text-sm text-primary flex-1"}>
                         <p className={"text-secondary mb-2"}>Username</p>
-                        <p>@{kidData.username}</p>
+                        <p>@{currentKid?.username}</p>
                     </div>
                     <div className={"text-sm text-primary flex-1"}>
                         <p className={"text-secondary mb-2"}>Gender</p>
-                        <p>{kidData?.gender === "m" ? "Male" : "Female"}</p>
+                        <p>{currentKid?.gender === "m" ? "Male" : "Female"}</p>
                     </div>
                     <div className={"text-sm text-primary flex-1"}>
                         <p className={"text-secondary mb-2"}>Age</p>

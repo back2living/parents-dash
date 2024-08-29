@@ -14,7 +14,7 @@ const Kids = ({kids}: {kids: IKid[]}) => {
             </div>
 
             <div className={"kids-grid"}>
-                {kids?.map((kid) => <KidCard key={kid._id} kid={kid}/>)}
+                {kids?.map((kid) => <KidCard key={kid?._id} kid={kid}/>)}
             </div>
 
             <FormModal isOpen={addKidModal} style={"lg:w-[550px] rounded-t-3xl max-h-full overflow-y-auto lg:mb-0"}>
