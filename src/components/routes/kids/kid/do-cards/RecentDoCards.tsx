@@ -1,11 +1,13 @@
 import {useFetchAllKidDoCards} from "@/hooks/useDocards";
 import NoData from "@/components/shared/NoData";
 import {useCurrentKid} from "@store/kid/kidStore";
+import {IDoCard} from "@interfaces/DoCardInterfaces";
 
 const RecentDoCards = () => {
     const currentKid = useCurrentKid();
     const {data, isPending} = useFetchAllKidDoCards("pending", "goal", currentKid?._id || "");
     const isEmpty = data?.data?.length === 0;
+    const doCardsWithOngoingPayment = data?.data?.filter((item => item.paid > 0)) as IDoCard[];
 
     return (
         <div>
@@ -15,7 +17,7 @@ const RecentDoCards = () => {
                 {isPending && <div className={"h-[180px] lg:h-[200px] bg-animate rounded-3xl mt-6"}/>}
                 {isEmpty && <NoData image={"/assets/images/no-do-card.png"} text={"No Do-Card Awaiting Approval"}/>}
                 {data?.data?.length > 0 && <div className={"grid grid-cols-1 md:grid-cols-2 gap-2 mt-6"}>
-                    {data?.data?.slice(0, 2).map((item, index: number) => (
+                    {doCardsWithOngoingPayment?.slice(0, 2).map((item, index: number) => (
                         <div key={index} className={"bg-primary p-3 rounded-2xl"}>
                             <div className={"w-full h-[150px] rounded-xl"}>
                                 <img className={"w-full h-full object-cover rounded-xl"} src={item.avatar}
@@ -33,12 +35,6 @@ const RecentDoCards = () => {
                                         <p>{item.points}pts</p>
                                         <p className={"text-secondary text-xs font-light"}>Target</p>
                                     </div>
-                                </div>
-
-
-                                <div className={"font-medium text-sm flex-center gap-4"}>
-                                    <button className={"text-green"}>Approve</button>
-                                    <button className={"text-orange"}>Decline</button>
                                 </div>
                             </div>
                         </div>

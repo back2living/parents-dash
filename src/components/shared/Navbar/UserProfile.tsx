@@ -1,21 +1,22 @@
 import {cn} from "@/lib/utils";
 import Link from "next/link";
 import {LogoutIcon, ProfileSettingsIcon, SupportIcon} from "@/components/shared/Svg";
-import {Dispatch, LegacyRef, SetStateAction, useState} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import FormModal from "@/components/shared/FormModal";
 import LogoutModal from "@/components/shared/Navbar/modal/LogoutModal";
 import {useCurrentUser} from "@/store/auth/authStore";
+import {useClickOutside} from "@/hooks/useClickoutside";
 
 interface IUSerProfile {
     showUserProfile: boolean;
-    ref?: LegacyRef<HTMLDivElement> | undefined;
     setShowUserProfile: Dispatch<SetStateAction<boolean>>;
 }
 
-const UserProfile = ({showUserProfile, ref, setShowUserProfile}: IUSerProfile) => {
-    const [showLogoutModal, setShowLogoutModal] = useState<boolean>(false);
+const UserProfile = ({showUserProfile, setShowUserProfile}: IUSerProfile) => {
     const currentUser = useCurrentUser();
+    const ref = useClickOutside<HTMLDivElement>(() => setShowUserProfile(false));
 
+    const [showLogoutModal, setShowLogoutModal] = useState<boolean>(false);
 
     return (
         <>

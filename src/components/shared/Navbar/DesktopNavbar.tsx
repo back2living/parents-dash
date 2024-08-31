@@ -1,7 +1,6 @@
 import {BellIcon} from "@/components/shared/Svg";
 import {NavbarProp} from "@/components/shared/Navbar/MobileNavbar";
-import {useEffect, useRef, useState} from "react";
-import useOnClickOutsideAndEscapePress from "@/hooks/useOnClickOutsideAndEscapePress";
+import {useEffect, useState} from "react";
 import UserProfile from "@/components/shared/Navbar/UserProfile";
 import GoBack from "@/components/shared/GoBack";
 import {useCurrentUser} from "@/store/auth/authStore";
@@ -9,8 +8,6 @@ import Image from "next/image";
 
 const DesktopNavbar = ({title="Title", setShowNotifications, goBack}: NavbarProp) => {
     const [showUserProfile, setShowUserProfile] = useState<boolean>(false);
-    const ref = useRef<HTMLDivElement>(null);
-    useOnClickOutsideAndEscapePress(ref, () => setShowUserProfile(false));
     const [key, setKey] = useState(0);
 
     const currentUser = useCurrentUser();
@@ -28,7 +25,7 @@ const DesktopNavbar = ({title="Title", setShowNotifications, goBack}: NavbarProp
 
                 <div className={"flex-center gap-4"}>
                     <button onClick={() => setShowNotifications(true)}>{BellIcon}</button>
-                    <button onClick={() => setShowUserProfile(!showUserProfile)}>
+                    <button className={showUserProfile ? "pointer-events-none" : ""} onClick={() => setShowUserProfile(!showUserProfile)}>
                         <Image
                             className={"w-8 h-8 rounded-full"}
                             width={32}
@@ -36,13 +33,12 @@ const DesktopNavbar = ({title="Title", setShowNotifications, goBack}: NavbarProp
                             src={currentUser?.avatar ? `${currentUser?.avatar}?key=${key}&cache=${key}` : "/assets/images/avatar.svg"}
                             alt={currentUser?.firstName || ""}
                         />
-                        {/*<img key={key} className={"w-8 h-8 rounded-full"} src={currentUser?.avatar || "/assets/images/avatar.svg"} alt="avatar"/>*/}
                     </button>
                 </div>
             </nav>
 
             {/*---------- USER PROFILE-----------*/}
-            <UserProfile showUserProfile={showUserProfile} ref={ref} setShowUserProfile={setShowUserProfile}/>
+            <UserProfile showUserProfile={showUserProfile} setShowUserProfile={setShowUserProfile}/>
         </header>
     );
 };

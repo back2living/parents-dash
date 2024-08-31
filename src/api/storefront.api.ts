@@ -36,8 +36,8 @@ export const deleteStorefrontCategoryItem = async ({id}: { id: string }) => {
     const {data} = await instance.delete(`${baseUrl}/storefronts/storefront/${id}`);
     return data;
 }
-export const fetchStorefrontPurchases = async (id: string, status?: string) => {
-    const {data} = await instance.get(`${baseUrl}/storefronts/purchases/kid/${id}${status ? `?status=${status}` : ""}`);
+export const fetchStorefrontPurchases = async (id: string, status?: string, pageNum?: number) => {
+    const {data} = await instance.get(`${baseUrl}/storefronts/purchases/kid/${id}${status ? `?status=${status}&size=5&page=${pageNum}` : `?size=5&page=${pageNum}`}`);
     return data;
 }
 export const approveOrRejectKidPurchase = async (id: string, approved: boolean) => {

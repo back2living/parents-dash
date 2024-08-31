@@ -15,11 +15,11 @@ export const useFetchAllDoCards = (status: string, type: string) => {
         queryFn: () => fetchAllDoCards(status, type)
     }) as {data: {data: IDoCard[]}; isPending: boolean;};
 }
-export const useFetchAllKidDoCards = (status: string, type: string, kidId: string, isMandatory?: boolean) => {
+export const useFetchAllKidDoCards = (status: string, type: string, kidId: string, isMandatory?: boolean, pageNum?: number) => {
     return useQuery({
         queryKey: ["allKidDoCards", kidId, status, type, isMandatory],
-        queryFn: () => fetchAllKidDoCards(status, type, kidId, isMandatory)
-    }) as {data: {data: IDoCard[]}; isPending: boolean;};
+        queryFn: () => fetchAllKidDoCards(status, type, kidId, isMandatory, pageNum!)
+    }) as {data: {data: IDoCard[], meta: {pages: number; page: number}}; isPending: boolean;};
 }
 export const useAddDoCard = (handleRouteToKidProfile: () => void) => {
     const queryClient = useQueryClient();

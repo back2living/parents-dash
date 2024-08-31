@@ -30,8 +30,8 @@ export const fetchAllDoCards = async (status: string, type="") => {
     const {data} = await instance.get(`${baseUrl}/docards?status=${status}&type=${type}`);
     return data;
 }
-export const fetchAllKidDoCards = async (status: string, type="", kidId: string, isMandatory?: boolean) => {
-    const {data} = await instance.get(`${baseUrl}/docards/kid/${kidId}?status=${status}&type=${type}&isMandatory=${isMandatory}`);
+export const fetchAllKidDoCards = async (status: string, type="", kidId: string, isMandatory?: boolean, pageNum?: number) => {
+    const {data} = await instance.get(`${baseUrl}/docards/kid/${kidId}?status=${status}&type=${type}&isMandatory=${isMandatory}&size=5&page=${pageNum}`);
     return data;
 }
 export const addDoCard = async ({kidId, storefrontItemId, purpose, points, isMandatory, type, avatar}: IAddDoCard) => {

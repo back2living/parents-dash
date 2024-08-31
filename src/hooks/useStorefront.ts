@@ -98,11 +98,11 @@ export const useDeleteStorefrontCategoryItem = (closeModal: () => void) => {
     })
 }
 
-export const useFetchStorefrontPurchases = (id: string, status?:string) => {
+export const useFetchStorefrontPurchases = (id: string, status?:string, pageNum?: number) => {
     return useQuery({
         queryKey: ["storefrontPurchases", id, status],
-        queryFn: () => fetchStorefrontPurchases(id, status)
-    }) as {data: {data: IPurchasedStorefrontItem[]}; isPending: boolean; isRefetching: boolean};
+        queryFn: () => fetchStorefrontPurchases(id, status, pageNum)
+    }) as {data: {data: IPurchasedStorefrontItem[], meta: {pages: number; page: number}}; isPending: boolean; isRefetching: boolean};
 }
 export const useApproveOrRejectKidPurchase = () => {
     const queryClient = useQueryClient();

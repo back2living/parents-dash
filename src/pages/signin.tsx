@@ -30,7 +30,7 @@ const Signin = () => {
         onSuccess: (data) => {
             toast.success(data?.message);
             setCurrentUser(data?.data);
-            Cookies.set("pgCurrentUser", JSON.stringify(data?.data), {sameSite: "None", secure: true});
+            Cookies.set("pgCurrentUser", "guardian", {sameSite: "None", secure: true});
             router.push("/dashboard");
         },
         onError: (error: CustomError) => {

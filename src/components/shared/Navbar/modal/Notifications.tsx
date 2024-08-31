@@ -5,6 +5,7 @@ import {useDeleteNotification, useFetchNotifications, useReadNotification} from 
 import {useState} from "react";
 import {motion} from "framer-motion";
 import {INotification} from "@interfaces/NotificationInterface";
+import {format} from "date-fns";
 
 const Loader = () => {
     return (
@@ -70,9 +71,8 @@ const Notifications = ({closeModal}: { closeModal: () => void }) => {
                             )}>
                             <img className={"w-8 h-8 object-cover rounded-lg"} src={notification?.receiver?.avatar} alt={notification?.receiver?.firstName}/>
                             <div className={"text-secondary font-normal flex-column gap-1"}>
-                                {/*<p className={"text-primary font-semibold"}>{notification?.heading}</p>*/}
                                 <p className={"text-sm"}>{notification?.message}</p>
-                                <p>2h</p>
+                                <p className={"text-xs"}>{format(notification?.createdAt, "PPPP")}</p>
                             </div>
                             {!notification?.read && <span className={"absolute top-3 right-3"}>{RedDotIcon}</span>}
                         </motion.div>

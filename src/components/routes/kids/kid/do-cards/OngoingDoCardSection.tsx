@@ -3,10 +3,13 @@ import OngoingDoCard from "@/components/routes/kids/kid/do-cards/OngoingDoCard";
 import {useFetchAllKidDoCards} from "@/hooks/useDocards";
 import {useCurrentKid} from "@store/kid/kidStore";
 import Loader from "@components/routes/kids/kid/do-cards/Loader";
+import {useState} from "react";
+import Pagination from "@components/shared/Pagination";
 
 const OngoingDoCardSection = () => {
     const currentKid = useCurrentKid();
-    const {data, isPending} = useFetchAllKidDoCards("pending", "goal", currentKid?._id || "", false);
+    const [pageNum, setPageNum] = useState(1);
+    const {data, isPending} = useFetchAllKidDoCards("pending", "goal", currentKid?._id || "", false, pageNum);
     const isEmpty = data?.data?.length === 0;
 
     if (isPending) return <Loader />
@@ -22,6 +25,8 @@ const OngoingDoCardSection = () => {
             {!isEmpty && !isPending && <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-6"}>
                 {data?.data?.map((doCard) => <OngoingDoCard doCard={doCard} key={doCard._id}/>)}
             </div>}
+
+            <Pagination setPageNum={setPageNum} pageNum={pageNum} totalPages={data?.meta?.pages} />
         </div>
     );
 };

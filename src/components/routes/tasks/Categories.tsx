@@ -17,7 +17,9 @@ const Categories = ({activeKidTab, setActiveKidTab, data, setActiveTabIndex}: IC
     return (
         <div className="p-2 min-w-[300px] w-[26.3%] rounded-xl max-w-[310px] bg-white overflow-auto hidden lg:block">
             <h3 className={"p-4 text-secondary-dark font-semibold"}>Kids</h3>
+
             {data.length === 0 && <p className={"font-medium text-secondary text-center"}>Please add a kid.</p>}
+
             {data?.length > 0 && <div className={"flex-column gap-2 font-medium"}>
                 {data?.map((kid, index: number) => <div key={kid._id} onClick={() => handleKidClick(kid, index)}
                                                         className={activeKidTab?._id === kid._id ? categoryStyle.active : categoryStyle.inactive}>

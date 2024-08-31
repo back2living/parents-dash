@@ -12,7 +12,7 @@ export const fetchKidChecklistsTasks = async (id: string) => {
 }
 
 export const fetchAKidChecklistsTasks = async (id: string, status:string, currentPage: number) => {
-    const {data} = await instance.get(`${baseUrl}/checklists/tasks/all/kid/${id}?status=${status}&size=10&page=${currentPage}`);
+    const {data} = await instance.get(`${baseUrl}/checklists/tasks/all/kid/${id}?status=${status}&size=20&page=${currentPage}`);
     return data;
 }
 

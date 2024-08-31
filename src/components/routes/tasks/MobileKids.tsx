@@ -59,8 +59,8 @@ const MobileKids = ({activeKidTab, setActiveKidTab, data}:  IMobileKids) => {
                     <motion.div className={"bg-white mx-auto rounded-2xl h-full max-w-[500px] p-4"}
                                 variants={mobileVariants} initial={"initial"} animate={"final"} exit={{opacity: 0}}>
                         <div className={"relative"}>
-                            <button onClick={() => setIsOpen(false)} className={"absolute top-2 right-2"}>{CircleCloseIcon}</button>
-                            <p className={"p-4"}>Kids</p>
+                        <button onClick={() => setIsOpen(false)} className={"absolute top-2 right-2"}>{CircleCloseIcon}</button>
+                           <p className={"p-4"}>Kids</p>
                             {data.length === 0 && <p className={"font-medium text-secondary text-center"}>Please add a kid.</p>}
 
                             {data.length > 0 && <div className={"flex-column gap-2 font-medium"}>
