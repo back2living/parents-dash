@@ -79,7 +79,7 @@ const KidCard = ({kid}: {kid: IKid}) => {
                     </Link>
                     <p className={"border-b border-[#ECECEC]"}/>
                     <button onClick={() => handleOpenModal("removeKid")}
-                            className={"p-1.5 text-primary flex-center gap-1"}><span>{RemoveKidIcon}</span> Remove Kid
+                            className={"p-1.5 flex-center gap-1 text-orange"}><span>{RemoveKidIcon}</span> Remove Kid
                     </button>
                 </div>
             </div>

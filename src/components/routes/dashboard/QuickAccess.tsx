@@ -6,7 +6,7 @@ const QuickAccess = ({stats}: { stats: IUserStats }) => {
     const currentUser = useCurrentUser();
     return (
         <div>
-            <h2 className={"text-lg font-semibold text-[#515151] mb-10"}>Hi, {currentUser?.firstName} 👋🏻</h2>
+            <h2 className={"text-lg font-semibold text-[#515151] mt-2.5 md:mt-0 mb-6 md:mb-10"}>Hi, {currentUser?.firstName} 👋🏻</h2>
 
             <div className={"hidden lg:flex lg:items-center lg:flex-wrap gap-4"}>
                 <Card
@@ -38,7 +38,7 @@ const QuickAccess = ({stats}: { stats: IUserStats }) => {
                     text={"Do-cards awaiting approval"}
                     count={stats?.docards || 0}
                     img={"savings-bg.webp"}
-                    link={{name: "Set up now", path: "/kids", textColor: "#09C2B2"}}
+                    link={{name: "Issue do-card", path: "/kids", textColor: "#09C2B2"}}
                     className={"dashboard-card"}
                 />
 

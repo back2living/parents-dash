@@ -1,7 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 
-const middleware = (req: NextRequest, res: NextResponse) => {
-    console.log("Res", res);
+const middleware = (req: NextRequest) => {
     const path = req.nextUrl.pathname;
     const isVerified = req.cookies.get("pgCurrentUser");
     const isPublicPath = path === "/signin" || path === "/signup" || path === "/forgot-password" || path === "/forgot-password-success";
@@ -17,6 +16,7 @@ const middleware = (req: NextRequest, res: NextResponse) => {
 }
 
 export default middleware;
+
 export const config = {
     matcher: ["/signin", "/signup", "/forgot-password", "/forgot-password-success", "/checklists", "/storefront", "/tasks", "/kids", "/kids/:id", "/settings", "/kids/:id/do-cards-goals", "/kids/:id/do-cards-penalties", "/kids/:id/issue-do-cards", "/kids/:id/purchased-items", "/kids/:id/tasks", "/dashboard"],
 }

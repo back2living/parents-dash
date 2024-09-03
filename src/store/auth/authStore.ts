@@ -18,7 +18,7 @@ const useAuthStore = create<AuthState>(
             currentUser: null,
             setCurrentUser: (user) => set(() => ({ currentUser: user })),
         }),
-        { name: "auth" }
+        { name: "pgGuardianAuth" }
     )
 );
 

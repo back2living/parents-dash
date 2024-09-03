@@ -65,7 +65,7 @@ const NewChecklist = ({closeModal, categoryExists, activeCategory, kidId, data}:
                 <div>
                     <label className={"auth-label"} htmlFor="">Checklist name</label>
                     <input value={checklistName} onChange={e => setChecklistName(e.target.value)}
-                           placeholder={"e.g sneakers"} className={"auth-input"} type="text"/>
+                           placeholder={"e.g Wash your face"} className={"auth-input"} type="text"/>
                 </div>
                 <div>
                     <label className={"auth-label text-primary"} htmlFor="">Category</label>

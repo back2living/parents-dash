@@ -39,7 +39,15 @@ const MobileKids = ({activeKidTab, setActiveKidTab, data}:  IMobileKids) => {
             </div>}
 
             <div className={"mt-8 flex-column gap-2"}>
-                {activeKidTab?.tasks?.map((task, index: number) => <div key={index} className={"flex-center-between p-3 bg-white border border-[#E8E8E8] rounded-xl"}>
+                {activeKidTab?.tasks?.length === 0 && <div className={"flex-column items-center gap-4"}>
+                    <img className={"w-16 h-16"} src="/assets/images/menu-board.png" alt=""/>
+                    <div className={"text-center text-sm lg:text-base"}>
+                        <p className={"text-primary font-semibold"}>Ooops nothing to show here</p>
+                        <p className={"text-secondary mt-1"}>Encourage your kid to start working on tasks.</p>
+                    </div>
+                </div>}
+
+                {activeKidTab?.tasks?.length > 0 && activeKidTab?.tasks?.map((task, index: number) => <div key={index} className={"flex-center-between p-3 bg-white border border-[#E8E8E8] rounded-xl"}>
                     <div className={"flex-center gap-1 text-sm"}>
                         <span>{task?.checklistInfo?.icon}</span>
                         <p className={"font-medium text-[#363636] flex-1"}>{task?.checklistInfo?.title}</p>

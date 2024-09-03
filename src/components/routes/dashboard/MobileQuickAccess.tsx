@@ -55,7 +55,7 @@ const MobileQuickAccess = ({stats}: { stats: IUserStats }) => {
                             text={"Do-cards awaiting approval"}
                             count={stats?.docards || 0}
                             img={"savings-bg.webp"}
-                            link={{name: "Set up now", path: "/savings", textColor: "#09C2B2"}}
+                            link={{name: "Issue do-card", path: "/savings", textColor: "#09C2B2"}}
                             className={"dashboard-card"}
                         />
                     </SwiperSlide>

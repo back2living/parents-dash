@@ -30,7 +30,7 @@ const UserProfile = ({showUserProfile, setShowUserProfile}: IUSerProfile) => {
                     </div>
                     <div className="right flex-column">
                         <span className={"text-primary"}>{currentUser?.firstName} {currentUser?.lastName}</span>
-                        <span>Parent</span>
+                        <span>Guardian</span>
                     </div>
                 </div>
                 <Link onClick={() => setShowUserProfile(false)} href={"/settings"} className={"flex-center gap-2 p-4"}>

@@ -25,7 +25,18 @@ const AwaitingApproval = ({tasks}: {tasks: IChecklistTask[]}) => {
                 <ChevronDown size={16} className={"text-[#B1B1B1]"}/>
             </div>
             {showDropdown && <div className={"mt-2 flex-column gap-2 h-[500px] overflow-auto"}>
-                {tasks?.map((task, index: number) => <div key={task?._id}
+
+                {tasks?.length === 0 && <div className={"flex-column items-center gap-4 mt-6"}>
+                    <img className={"w-16 h-16"} src="/assets/images/menu-board.png" alt=""/>
+                    <div className={"text-center text-sm lg:text-base"}>
+                        <p className={"text-primary font-semibold"}>Ooops nothing to show here</p>
+                        <p className={"text-secondary mt-1"}>Encourage your kid to start working on tasks.</p>
+                    </div>
+                </div>}
+
+
+
+                {tasks?.length > 0 && tasks?.map((task, index: number) => <div key={task?._id}
                     className={"flex-center-between p-3 bg-white border border-[#E8E8E8] rounded-xl"}>
                     <div className={"flex-center gap-2"}>
                         <span>{task?.checklistInfo?.icon}</span>

@@ -43,7 +43,7 @@ const NewChecklistCategoryModal = ({closeModal, kidData}: IChecklistCategoryModa
                 <IconComponent emoji={emoji} setEmoji={setEmoji} />
                 <div className={"mt-6"}>
                     <label className={"auth-label"} htmlFor="">Category name</label>
-                    <input value={categoryName} onChange={e => setCategoryName(e.target.value)} placeholder={"e.g sneakers"} className={"auth-input"} type="text"/>
+                    <input value={categoryName} onChange={e => setCategoryName(e.target.value)} placeholder={"e.g Morning task"} className={"auth-input"} type="text"/>
                 </div>
                 <div className={"flex gap-6 mt-6"}>
                     <button onClick={closeModal} className={"white-btn"}>Cancel</button>
