@@ -65,7 +65,7 @@ const MobileChecklist = ({data, setNewChecklistModal, setNewCategoryModal, handl
                             <button onClick={() => setIsOpen(false)} className={"absolute top-2 right-2"}>{CircleCloseIcon}</button>
                            <p className={"p-4"}>Categories</p>
                             <div className={"flex-column gap-2 font-medium"}>
-                                {data?.data?.map(((item: IChecklistCategory) => <ChecklistCategory category={item} handleChangeCategory={() => handleChangeCategory(item)} isActive={newActiveCategory?._id === item?._id} key={item._id}/>))}
+                                {data?.data?.map(((item: IChecklistCategory, index: number) => <ChecklistCategory category={item} handleChangeCategory={() => handleChangeCategory(item, index)} isActive={newActiveCategory?._id === item?._id} key={item._id}/>))}
 
                                 <button onClick={handleNewCategory} className={"ml-3 text-[#B1B1B1] flex-center gap-2 text-sm"}>
                                     <Plus size={20} className={"text-[#B1B1B1]"}/> New Category
