@@ -22,7 +22,7 @@ const useAuthStore = create<KidState>(
             activeTab: "profile",
             setActiveTab: (tab) => set(() => ({ activeTab: tab })),
         }),
-        { name: "kid" }
+        { name: "pgGuardianKid" }
     )
 );
 
